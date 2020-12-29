@@ -1,41 +1,42 @@
 :root {
-  --background_color: white;
-  --login-width: 25rem;
-  --login_border: #c9c8c8;
+  --background: white;
+  --first_width: 75rem;
+  --border: #c9c8c8;
+  --input_width: 15rem;
+  --a_hover: gold;
 }
 
-header {
-  max-width: var(--first_width);
+main {
+  width: var(--first_width);
   margin: 0 auto;
-  padding: 2rem 0;
+}
+
+.review_container {
+  padding: 1rem 0;
+}
+
+main input,
+select {
+  width: 100%;
+  padding: 0.3rem 0;
+  margin: 0.3rem 0;
+  outline: none;
+}
+main textarea {
+  width: 100%;
+  outline: none;
+  height: 20rem;
+  padding: 0.3rem;
+}
+.btn_container {
+  width: 100%;
   display: flex;
-  font-size: 1.2rem;
-  border-bottom: 1px solid var(--border);
+  justify-content: center;
+  padding: 1rem 0;
 }
-.logo {
-  flex: 1 1 20%;
-}
-.nav {
-  flex: 1 1 30%;
-  display: flex;
-  justify-content: space-between;
-}
-.search {
-  flex: 1 1 50%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-}
-.search a {
-  margin: 0 1rem;
-}
-.nav a:hover {
-  color: var(--a_hover);
-}
-.search input {
-  border: 1px solid var(--border);
-  border-radius: 5%;
-  padding: 0.2rem 0.3rem;
-  width: var(--input_width);
+.review_btn {
+  padding: 0.5rem 5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

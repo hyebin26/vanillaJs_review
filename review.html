@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>리뷰작성하기</title>
+    <link rel="stylesheet" href="src/css/header.css" />
+    <link rel="stylesheet" href="src/css/footer.css" />
     <link rel="stylesheet" href="src/css/review.css" />
   </head>
   <body>
@@ -22,5 +24,33 @@
         <input type="text" placeholder="리뷰 검색하기" />
       </div>
     </header>
+    <main>
+      <form>
+        <div class="review_container">
+          <select name="catagory" id="">
+            <option value="영화">영화</option>
+            <option value="도서">도서</option>
+            <option value="앨범">앨범</option>
+          </select>
+          <input
+            type="text"
+            class="title"
+            placeholder="글의 제목을 입력해주세요"
+          />
+          <input
+            type="text"
+            class="sub_title"
+            placeholder="감상한 작품의 제목을 입력해주세요"
+          />
+        </div>
+      </form>
+      <textarea name="textarea" id="review_textarea"></textarea>
+      <div class="btn_container">
+        <button class="review_btn">작성</button>
+      </div>
+    </main>
+    <footer>
+      <h1>Footer</h1>
+    </footer>
   </body>
 </html>

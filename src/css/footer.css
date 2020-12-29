@@ -1,0 +1,18 @@
+:root {
+  --background: white;
+  --first_width: 75rem;
+  --border: #c9c8c8;
+  --input_width: 15rem;
+  --a_hover: gold;
+}
+
+footer {
+  width: var(--first_width);
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+footer h1 {
+  font-size: 3rem;
+  padding: 1rem 0;
+}
