@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const connection = mysql.createConnection({
+const conn = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
@@ -7,13 +7,24 @@ const connection = mysql.createConnection({
   database: "review",
 });
 
-connection.connect();
+conn.connect();
 
-connection.query("select * from review", function (err, result, fields) {
+let sql = "select * from review";
+conn.query(sql, function (err, rows, fields) {
   if (err) {
     console.log(err);
   }
-  console.log(result);
+  rows.map((item) => console.log(item));
 });
+// const sql =
+//   "insert into review (rindex,category,postingname,cname) values(?,?,?,?)";
+// const params = ["5", "앨범", "맥밀러는쩐당", "맥밀러"];
 
-connection.end();
+// conn.query(sql, params, function (err, rows, fields) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(rows);
+// });
+
+conn.end();
