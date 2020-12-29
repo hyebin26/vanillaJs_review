@@ -1,0 +1,60 @@
+:root {
+  --background_color: white;
+  --sign-width: 20rem;
+  --sign_border: #c9c8c8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+input {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  border-radius: 1%;
+  border: 1px solid var(--sign_border);
+  outline: none;
+}
+
+.sign {
+  width: var(--sign-width);
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.sign_logo {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.sign_id,
+.sign_password,
+.sign_nickname {
+  padding: 0.8rem 0;
+}
+
+.sub_p {
+  font-size: 0.7rem;
+  padding: 0.1rem 0;
+}
+.sign_in_btn {
+  width: 100%;
+  padding: 0.7rem 0;
+  border: none;
+  outline: none;
+}
+.sign_login {
+  padding: 0.5rem 0;
+}
+.sign_login a {
+  text-decoration: underline;
+}
+
+.js_red {
+  border: 1px solid red;
+}
