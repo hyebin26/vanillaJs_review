@@ -1,0 +1,41 @@
+:root {
+  --background_color: white;
+  --login-width: 25rem;
+  --login_border: #c9c8c8;
+}
+
+header {
+  max-width: var(--first_width);
+  margin: 0 auto;
+  padding: 2rem 0;
+  display: flex;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  flex: 1 1 20%;
+}
+.nav {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.search {
+  flex: 1 1 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+.search a {
+  margin: 0 1rem;
+}
+.nav a:hover {
+  color: var(--a_hover);
+}
+.search input {
+  border: 1px solid var(--border);
+  border-radius: 5%;
+  padding: 0.2rem 0.3rem;
+  width: var(--input_width);
+}

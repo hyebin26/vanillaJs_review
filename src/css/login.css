@@ -44,6 +44,7 @@ a {
   margin: 1rem 0;
   border: none;
   padding: 0.5rem 0;
+  cursor: pointer;
 }
 
 .login_sign {
