@@ -8,45 +8,50 @@
   </head>
   <body>
     <section class="sign">
-      <div class="sign_logo">
-        <a href="#">REVIEW</a>
-      </div>
-      <div class="sign_id">
-        <p>아이디:</p>
-        <input type="text" placeholder="아이디" class="inputId js_input" />
-        <p class="js_id"></p>
-      </div>
-      <div class="sign_password">
-        <p>패스워드:</p>
-        <p class="sub_p">8자이상을 입력해주세요</p>
-        <input
-          type="password"
-          placeholder="비밀번호"
-          class="inputPassword js_input password"
-        />
-        <p class="js_password"></p>
-        <p>비밀번호 확인</p>
-        <input
-          type="password"
-          placeholder="비밀번호확인"
-          class="inputPassword2 js_input password"
-        />
-      </div>
-      <p class="js_password2"></p>
-      <div class="sign_nickname">
-        <p>별명</p>
-        <p class="sub_p">다른 유저와 겹치지 않은 별명을 입력해주세요</p>
-        <input
-          type="text"
-          placeholder="별명(2~15자)"
-          class="input_nickname js_input"
-        />
-      </div>
-      <button class="sign_in_btn">회원가입완료</button>
-      <div class="sign_login">
-        <span>이미 아이디가 있으신가요 ?</span>
-        <a href="login.html">로그인</a>
-      </div>
+      <form>
+        <div class="sign_logo">
+          <a href="#">REVIEW</a>
+        </div>
+        <div class="sign_id">
+          <p>아이디:</p>
+          <input type="text" placeholder="아이디" class="inputId js_input" />
+          <p class="js_id"></p>
+        </div>
+        <div class="sign_password">
+          <p>패스워드:</p>
+          <p class="sub_p">8자이상을 입력해주세요</p>
+          <input
+            type="password"
+            placeholder="비밀번호"
+            class="inputPassword js_input password"
+          />
+          <p class="js_password"></p>
+          <p>비밀번호 확인</p>
+          <input
+            type="password"
+            placeholder="비밀번호확인"
+            class="inputPassword2 js_input password"
+          />
+          <p class="js_password2"></p>
+        </div>
+        <div class="sign_nickname">
+          <p>별명</p>
+          <p class="sub_p">
+            다른 유저와 겹치지 않은 별명을 입력해주세요(2~15자)
+          </p>
+          <input
+            type="text"
+            placeholder="별명(2~15자)"
+            class="input_nickname js_input"
+          />
+          <p></p>
+        </div>
+        <button class="sign_in_btn">회원가입완료</button>
+        <div class="sign_login">
+          <span>이미 아이디가 있으신가요 ?</span>
+          <a href="login.html">로그인</a>
+        </div>
+      </form>
     </section>
     <script src="src/javascript/sign_in.js"></script>
   </body>

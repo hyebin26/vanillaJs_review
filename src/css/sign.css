@@ -58,3 +58,7 @@ input {
 .js_red {
   border: 1px solid red;
 }
+
+.sign_in_btn {
+  cursor: pointer;
+}
