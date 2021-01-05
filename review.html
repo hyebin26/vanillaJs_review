@@ -25,9 +25,9 @@
       </div>
     </header>
     <main>
-      <form>
+      <form action="index.html" method="POST">
         <div class="review_container">
-          <select name="catagory" id="">
+          <select name="category" id="category">
             <option value="영화">영화</option>
             <option value="도서">도서</option>
             <option value="앨범">앨범</option>
@@ -35,22 +35,26 @@
           <input
             type="text"
             class="title"
+            name="title"
             placeholder="글의 제목을 입력해주세요"
           />
           <input
             type="text"
             class="sub_title"
+            name="sub_title"
             placeholder="감상한 작품의 제목을 입력해주세요"
           />
         </div>
       </form>
-      <textarea name="textarea" id="review_textarea"></textarea>
+      <textarea name="description" id="review_textarea"></textarea>
       <div class="btn_container">
+        <input type="submit" id="input_submit" />
         <button class="review_btn">작성</button>
       </div>
     </main>
     <footer>
       <h1>Footer</h1>
     </footer>
+    <script type="module" src="src/javascript/review.js"></script>
   </body>
 </html>

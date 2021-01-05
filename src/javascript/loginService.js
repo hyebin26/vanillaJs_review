@@ -1,3 +1,7 @@
+import AuthService from "./fire_auth.js";
+
+const authService = new AuthService();
+
 const loginBtn = document.querySelector(".login_btn");
 const loginId = document.querySelector(".login_id");
 const loginPassword = document.querySelector(".login_password");
@@ -15,7 +19,16 @@ const handleLogin = () => {
   });
 };
 
+const clickBtn = () => {
+  const googleBtn = document.querySelector(".googleBtn");
+  googleBtn.addEventListener("click", (e) => {
+    AuthService.googleLogin().then((result) => console.log(result));
+  });
+  console.log("hellos");
+};
+
 const init = () => {
   handleLogin();
+  clickBtn();
 };
 init();

@@ -40,3 +40,6 @@ main textarea {
   outline: none;
   cursor: pointer;
 }
+#input_submit {
+  display: none;
+}
