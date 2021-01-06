@@ -39,11 +39,11 @@ main {
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
-  width: 100%;
+  max-width: var(--first_width);
 }
 
 .contents_container {
-  width: var(--first_width);
+  width: 100%;
   margin: 0 auto;
   flex-direction: column;
 }

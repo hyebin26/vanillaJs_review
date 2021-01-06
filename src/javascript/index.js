@@ -9,16 +9,40 @@ const uploadContent = async (item) => {
   const container = document.querySelector(".contents_container");
   const itemList = document.createElement("li");
   const itemLink = document.createElement("a");
-  const itemDiv = document.createElement("div");
-  const itemP = document.createElement("p");
+  const itemTextDiv = document.createElement("div");
+  const itemImgDiv = document.createElement("div");
+  const itemContentDiv = document.createElement("div");
+  const itemTitle = document.createElement("p");
   const itemImg = document.createElement("img");
-  container.appendChild(itemList);
+  const itemDes = document.createElement("p");
+  const itemUser = document.createElement("span");
+  const itemCategory = document.createElement("span");
+  //content > a > div(p,p,span,span) ,div img
   itemList.classList.add("content");
-  itemDiv.appendChild(itemImg);
-  itemLink.appendChild(itemDiv);
-  itemLink.appendChild(itemP);
-  itemP.innerText = item.postingname;
+  itemContentDiv.classList.add("content_box");
+  itemTextDiv.classList.add("content_text_container");
+  itemTitle.classList.add("content_title");
+  itemDes.classList.add("content_description");
+  itemImgDiv.classList.add("img_container");
+  itemUser.classList.add("content_user");
+  itemCategory.classList.add("content_category");
+
   itemList.appendChild(itemLink);
+  itemImgDiv.appendChild(itemImg);
+  itemLink.appendChild(itemContentDiv);
+  itemContentDiv.appendChild(itemTextDiv);
+  itemContentDiv.appendChild(itemImgDiv);
+  container.appendChild(itemList);
+
+  itemTextDiv.appendChild(itemTitle);
+  itemTextDiv.appendChild(itemDes);
+  itemTextDiv.appendChild(itemUser);
+  itemTextDiv.appendChild(itemCategory);
+
+  itemTitle.innerText = item.title;
+  itemCategory.innerText = item.category;
+  itemUser.innerText = item.userId;
+  itemDes.innerText = item.content;
 };
 
 const init = () => {

@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const conn = require("./mysql");
-const path = require("path");
 const router = require("../router/main")(app);
 
 app.use(express.static(__dirname + "../../../public"));
@@ -13,7 +12,7 @@ app.use(express.static(__dirname + "../../"));
 // });
 
 app.get("/json", (req, res) => {
-  conn.query("select * from review", (err, results) => {
+  conn.query("select * from reviewData", (err, results) => {
     return res.json(results);
   });
 });
