@@ -1,7 +1,7 @@
 :root {
   --background: white;
   --first_width: 75rem;
-  --border: #c9c8c8;
+  --border: rgba(0, 0, 0, 0.816);
   --input_width: 15rem;
   --a_hover: gold;
 }
@@ -37,21 +37,22 @@ main {
 }
 
 .contents_container {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 .content {
   width: 17rem;
+  border: 1px solid var(--border);
   margin-bottom: 2rem;
+  width: 100%;
 }
 .img_container {
-  width: 100%;
+  width: 10%;
 }
 .img_container img {
   width: 100%;
-  height: 17rem;
+  height: 8rem;
 }
 
 footer {
