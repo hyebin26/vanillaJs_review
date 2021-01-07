@@ -8,6 +8,7 @@ module.exports = function (app) {
       res.render(__dirname + "../../../views/index.html", { results: results });
     });
   });
+
   app.get("/review/new", function (req, res) {
     res.render(__dirname + "../../../views/review.html");
   });
@@ -30,5 +31,9 @@ module.exports = function (app) {
         }
       }
     );
+  });
+
+  app.get("/review/update", (req, res) => {
+    res.render(__dirname + "../../../views/update.html");
   });
 };
