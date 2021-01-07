@@ -72,3 +72,12 @@ main {
   width: 100%;
   height: 5rem;
 }
+.content_sub_title,
+.content_category {
+  color: #757575;
+  padding: 0 0.2rem;
+}
+.content_sub_title,
+.content_category:hover {
+  text-decoration: none;
+}

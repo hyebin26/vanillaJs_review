@@ -17,6 +17,7 @@ const uploadContent = async (item) => {
   const itemDes = document.createElement("p");
   const itemUser = document.createElement("span");
   const itemCategory = document.createElement("span");
+  const itemSubTitle = document.createElement("span");
   //content > a > div(p,p,span,span) ,div img
   itemList.classList.add("content");
   itemContentDiv.classList.add("content_box");
@@ -26,6 +27,7 @@ const uploadContent = async (item) => {
   itemImgDiv.classList.add("img_container");
   itemUser.classList.add("content_user");
   itemCategory.classList.add("content_category");
+  itemSubTitle.classList.add("content_sub_title");
 
   itemList.appendChild(itemLink);
   itemImgDiv.appendChild(itemImg);
@@ -37,11 +39,13 @@ const uploadContent = async (item) => {
   itemTextDiv.appendChild(itemDes);
   itemTextDiv.appendChild(itemUser);
   itemTextDiv.appendChild(itemCategory);
+  itemTextDiv.appendChild(itemSubTitle);
 
   itemTitle.innerText = item.title;
-  itemCategory.innerText = item.category;
+  itemCategory.innerText = "#" + item.category;
   itemUser.innerText = item.userId;
   itemDes.innerText = item.content;
+  itemSubTitle.innerText = "#" + item.sub_title;
 
   container.appendChild(itemList);
 };
