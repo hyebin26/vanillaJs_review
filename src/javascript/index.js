@@ -10,6 +10,7 @@ const uploadContent = async (item) => {
   const itemList = document.createElement("li");
   const itemLink = document.createElement("a");
   const itemTextDiv = document.createElement("div");
+  const itemSubTextDiv = document.createElement("div");
   const itemImgDiv = document.createElement("div");
   const itemContentDiv = document.createElement("div");
   const itemTitle = document.createElement("p");
@@ -28,6 +29,7 @@ const uploadContent = async (item) => {
   itemUser.classList.add("content_user");
   itemCategory.classList.add("content_category");
   itemSubTitle.classList.add("content_sub_title");
+  itemSubTextDiv.classList.add("content_user_container");
 
   itemList.appendChild(itemLink);
   itemImgDiv.appendChild(itemImg);
@@ -37,9 +39,11 @@ const uploadContent = async (item) => {
 
   itemTextDiv.appendChild(itemTitle);
   itemTextDiv.appendChild(itemDes);
-  itemTextDiv.appendChild(itemUser);
-  itemTextDiv.appendChild(itemCategory);
-  itemTextDiv.appendChild(itemSubTitle);
+  itemTextDiv.appendChild(itemSubTextDiv);
+
+  itemSubTextDiv.appendChild(itemUser);
+  itemSubTextDiv.appendChild(itemCategory);
+  itemSubTextDiv.appendChild(itemSubTitle);
 
   itemTitle.innerText = item.title;
   itemCategory.innerText = "#" + item.category;

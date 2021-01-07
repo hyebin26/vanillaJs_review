@@ -25,7 +25,7 @@
       </div>
     </header>
     <main>
-      <form action="/" method="POST" class="new_form">
+      <form action="/review/new" method="POST" class="new_form" id="add_form">
         <div class="review_container">
           <select name="category" id="category">
             <option value="영화">영화</option>
@@ -34,22 +34,19 @@
           </select>
           <input
             type="text"
-            class="title"
             name="title"
             placeholder="글의 제목을 입력해주세요"
           />
           <input
             type="text"
-            class="sub_title"
-            name="content"
+            name="subTitle"
             placeholder="감상한 작품의 제목을 입력해주세요"
           />
         </div>
+        <textarea name="content" id="review_textarea"></textarea>
       </form>
-      <textarea name="description" id="review_textarea"></textarea>
       <div class="btn_container">
-        <input type="submit" id="input_submit" />
-        <button class="review_btn">작성</button>
+        <button class="review_btn" form="add_form">작성</button>
       </div>
     </main>
     <footer>

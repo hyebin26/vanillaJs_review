@@ -3,8 +3,9 @@
   --first_width: 75rem;
   --border: rgba(0, 0, 0, 0.816);
   --input_width: 15rem;
-  --text_description: rgb(101, 101, 101);
+  --text_description: rgb(68, 67, 67);
   --a_hover: gold;
+  --font_sub: #757575;
 }
 body {
   width: 100%;
@@ -65,8 +66,23 @@ main {
   width: 90%;
   padding: 0 1rem;
 }
+
+.content_user_container {
+  padding-top: 0.3rem;
+  font-size: 0.8rem;
+}
+.content_title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-bottom: 0.2rem;
+}
+.content_user {
+  font-weight: 550;
+}
 .content_description {
-  color: var(--text_description);
+  color: rgb(86, 78, 78);
+  font-size: 0.8em;
+  overflow: hidden;
 }
 .img_container img {
   width: 100%;
@@ -74,10 +90,6 @@ main {
 }
 .content_sub_title,
 .content_category {
-  color: #757575;
+  color: var(--font_sub);
   padding: 0 0.2rem;
-}
-.content_sub_title,
-.content_category:hover {
-  text-decoration: none;
 }
