@@ -11,11 +11,7 @@ app.use(express.static(__dirname + "../../"));
 //   //__dirname : It will resolve to your project folder.
 // });
 
-app.get("/json", (req, res) => {
-  conn.query("select * from reviewData", (err, results) => {
-    return res.json(results);
-  });
-});
+
 
 app.set("views", "../../views");
 app.set("view engine", "ejs");

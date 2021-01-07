@@ -1,11 +1,10 @@
 const dataLoad = async () => {
   const contents = await fetch("http://localhost:3000/json") //
     .then((result) => result.json());
-  contents.map((item) => uploadContent(item));
-  console.log(contents);
+  contents.map((item) => showMainData(item));
 };
 
-const uploadContent = async (item) => {
+const showMainData = (item) => {
   const container = document.querySelector(".contents_container");
   const itemList = document.createElement("li");
   const itemLink = document.createElement("a");
@@ -51,11 +50,11 @@ const uploadContent = async (item) => {
   itemDes.innerText = item.content;
   itemSubTitle.innerText = "#" + item.sub_title;
 
+  itemLink.setAttribute("href", `/review/update/${item.id}`);
   container.appendChild(itemList);
 };
 
 const init = () => {
-  uploadContent();
   dataLoad();
 };
 init();
