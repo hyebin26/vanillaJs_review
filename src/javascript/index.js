@@ -32,7 +32,6 @@ const uploadContent = async (item) => {
   itemLink.appendChild(itemContentDiv);
   itemContentDiv.appendChild(itemTextDiv);
   itemContentDiv.appendChild(itemImgDiv);
-  container.appendChild(itemList);
 
   itemTextDiv.appendChild(itemTitle);
   itemTextDiv.appendChild(itemDes);
@@ -43,6 +42,8 @@ const uploadContent = async (item) => {
   itemCategory.innerText = item.category;
   itemUser.innerText = item.userId;
   itemDes.innerText = item.content;
+
+  container.appendChild(itemList);
 };
 
 const init = () => {
