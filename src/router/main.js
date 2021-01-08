@@ -52,15 +52,14 @@ module.exports = function (app) {
           throw new Error();
         } else {
           //결과를 보낸다 -> /reivew/update/:id/json
-          res.render(__dirname + "../../../views/update.html", {
-            result: result,
-          });
+          res.render(__dirname + "../../../views/update.html");
         }
       });
     } else {
       res.send("There is no id!");
     }
   });
+
   app.get("/review/update/:id/json", (req, res) => {
     let index = req.params.id;
     if (index) {
@@ -75,6 +74,12 @@ module.exports = function (app) {
           res.send(result);
         }
       );
+    }
+  });
+  app.post("/review/update/:id/json", (req, res) => {
+    index = req.params.id;
+    if (index) {
+      res.redirect(`/review/update/${index}`);
     }
   });
 };

@@ -42,27 +42,20 @@
           </div>
           <div class="comment_container">
             <div class="comment_input">
-              <p class="comment_title">댓글</p>
-              <div class="comment_input_box">
-                <input type="text" placeholder="댓글을 남겨 보세요" />
-                <button>등록</button>
-              </div>
+              <form class="comment_form">
+                <p class="comment_title">댓글</p>
+                <div class="comment_input_box">
+                  <input
+                    type="text"
+                    placeholder="댓글을 남겨 보세요"
+                    class="update_comment_input"
+                  />
+                  <button class="comment_add_btn">등록</button>
+                </div>
+              </form>
             </div>
             <div class="comment_output">
-              <ul class="comments">
-                <li class="comments_feed">
-                  <span class="comments_feed_userId">손님1234</span>
-                  <span class="comments_feed_content">그러니깐요</span>
-                </li>
-                <li class="comments_feed">
-                  <span class="comments_feed_userId">손님qwercqwe</span>
-                  <span class="comments_feed_content">그러니깐요</span>
-                </li>
-                <li class="comments_feed">
-                  <span class="comments_feed_userId">손님qwerqwer</span>
-                  <span class="comments_feed_content">그러니깐요</span>
-                </li>
-              </ul>
+              <ul class="comments"></ul>
             </div>
           </div>
         </div>
