@@ -1,9 +1,21 @@
 const updateCommentContainer = document.querySelector(".comments");
 
+const loadDate = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const ddate = date.getDate();
+  const hour = date.getHours();
+  const min = date.getMinutes();
+  const time = `${year} : ${month + 1 >= 10 ? month : "0" + (month + 1)} : ${
+    ddate >= 10 ? ddate : "0" + ddate
+  } : ${hour} : ${min >= 10 ? min : "0" + min}`;
+  return time;
+};
+
 const loadUpdate = async () => {
-  const data = await fetch(location.href + "/json").then((result) =>
-    result.json()
-  );
+  const data = await fetch(location.href + "/json") //
+    .then((result) => result.json());
   showUpdateData(data[0]);
 };
 
@@ -64,6 +76,7 @@ const clickCommentBtn = (e) => {
   const commentFeedDiv = document.createElement("div");
   const commentFeedDeleteBtn = document.createElement("button");
   const commentFeedUpdateBtn = document.createElement("button");
+  const commentDate = document.createElement("p");
 
   commentList.classList.add("comments_feed");
   commentUserId.classList.add("comments_feed_userId");
@@ -71,18 +84,21 @@ const clickCommentBtn = (e) => {
   commentFeedDiv.classList.add("comment_feed_div");
   commentFeedDeleteBtn.classList.add("comment_delete_btn");
   commentFeedUpdateBtn.classList.add("comment_update_btn");
+  commentDate.classList.add("comment_date");
 
+  updateCommentContainer.appendChild(commentList);
   commentList.appendChild(commentUserId);
   commentList.appendChild(commentContent);
   commentList.appendChild(commentFeedDiv);
+  commentList.appendChild(commentDate);
   commentFeedDiv.appendChild(commentFeedUpdateBtn);
   commentFeedDiv.appendChild(commentFeedDeleteBtn);
-  updateCommentContainer.appendChild(commentList);
 
   commentFeedUpdateBtn.innerText = "수정";
   commentFeedDeleteBtn.innerText = "삭제";
   commentContent.innerText = updateCommentInput.value;
   commentUserId.innerText = "손님1279";
+  commentDate.innerText = loadDate();
 
   commentFeedDeleteBtn.addEventListener("click", handleDelete);
   commentFeedUpdateBtn.addEventListener("click", handleUpdate);

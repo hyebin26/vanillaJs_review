@@ -116,3 +116,8 @@ main {
   font-weight: bold;
   padding-right: 0.2rem;
 }
+
+.comment_date {
+  color: var(--border);
+  font-size: 0.7rem;
+}
