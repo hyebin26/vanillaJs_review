@@ -41,14 +41,19 @@
             <span class="update_sub_title"></span>
           </div>
           <div class="comment_container">
-            <div class="comment_input">
-              <form class="comment_form">
+            <div class="comment_input" method="POST">
+              <form
+                class="comment_form"
+                method="POST"
+                action="/review/upate/1/json/comment"
+              >
                 <p class="comment_title">댓글</p>
                 <div class="comment_input_box">
                   <input
                     type="text"
                     placeholder="댓글을 남겨 보세요"
                     class="update_comment_input"
+                    name="comment_content"
                   />
                   <button class="comment_add_btn">등록</button>
                 </div>
@@ -94,5 +99,6 @@
       <h1>Footer</h1>
     </footer>
     <script src="../../javascript/update.js"></script>
+    <script src="../../javascript/comment.js"></script>
   </body>
 </html>

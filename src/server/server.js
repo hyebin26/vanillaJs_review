@@ -11,8 +11,6 @@ app.use(express.static(__dirname + "../../"));
 //   //__dirname : It will resolve to your project folder.
 // });
 
-
-
 app.set("views", "../../views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
