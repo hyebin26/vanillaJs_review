@@ -17,10 +17,18 @@ module.exports = function (app) {
     // });
     res.render(__dirname + "../../../views/index.html");
   });
-
+  app.get("/review/login", (req, res) => {
+    res.render(__dirname + "../../../views/login.html");
+  });
   app.get("/review/new", function (req, res) {
     res.render(__dirname + "../../../views/addReviewForm.html");
   });
+  app.get("/review/signUp", (req, res) => {
+    res.render(__dirname + "../../../views/signup.html");
+  });
+
+  /**/
+  /**/
   app.post("/review/new", (req, res) => {
     const title = req.body.title;
     const category = req.body.category;
@@ -128,6 +136,7 @@ module.exports = function (app) {
       }
     });
   });
+
   app.post("/review/update/:id/json/comment/delete", (req, res) => {
     let commentNum = req.body.list_num.commentNum;
     const commentDeleteSql = "delete from commentData where comment_num=?";
@@ -138,6 +147,18 @@ module.exports = function (app) {
       } else {
         console.log("Delete");
       }
+    });
+  });
+
+  app.post("/review/update/:id/json/delete", (req, res) => {
+    let content_id = req.body.contentId;
+    let contentDeleteSql = "delete from reviewData where id=?";
+    conn.query(contentDeleteSql, [content_id], (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      }
+      console.log("Delete !!");
     });
   });
 
@@ -155,18 +176,6 @@ module.exports = function (app) {
       } else {
         console.log("Edit!!");
       }
-    });
-  });
-
-  app.post("/review/update/:id/json/delete", (req, res) => {
-    let content_id = req.body.contentId;
-    let contentDeleteSql = "delete from reviewData where id=?";
-    conn.query(contentDeleteSql, [content_id], (err, result) => {
-      if (err) {
-        console.log(err);
-        throw new Error();
-      }
-      console.log("Delete !!");
     });
   });
 
@@ -200,6 +209,7 @@ module.exports = function (app) {
       }
     );
   });
+
   app.get("/review/update/:id/edit", (req, res) => {
     res.render(__dirname + "../../../views/editReviewForm.html");
   });
