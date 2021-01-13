@@ -1,5 +1,3 @@
-const commentContainer = document.querySelector(".comments");
-
 const loadDate = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -40,7 +38,8 @@ const clickCommentEdit = async (e) => {
 const handleCommentDelete = async (e) => {
   e.preventDefault();
   const list = e.target.parentNode.parentNode;
-  updateCommentContainer.removeChild(list);
+  const listContainer = list.parentNode;
+  listContainer.removeChild(list);
   await fetch(location.href + "/json/comment/delete", {
     method: "POST",
     body: JSON.stringify({
@@ -77,6 +76,7 @@ const showComment = (comment) => {
   const commentFeedDeleteBtn = document.createElement("button");
   const commentFeedUpdateBtn = document.createElement("button");
   const commentDate = document.createElement("p");
+  const updateCommentContainer = document.querySelector(".comments");
 
   commentList.dataset.commentNum = comment.comment_num;
 
@@ -106,7 +106,7 @@ const showComment = (comment) => {
   updateForm.reset();
 };
 
-const clickCommentAdd = async (event) => {
+const clickCommentAddBtn = async (event) => {
   event.preventDefault();
   const updateCommentInput = document.querySelector(".update_comment_input");
   if (updateCommentInput.value === "") {
@@ -139,7 +139,7 @@ const fetchComment = async () => {
     .then((data) => (commentData = data))
     .catch((err) => new Error(err));
   commentData.map((comment) => showComment(comment));
-  updateAddFormBtn.addEventListener("click", clickCommentAdd);
+  updateAddFormBtn.addEventListener("click", clickCommentAddBtn);
 };
 
 const commentInit = () => {
