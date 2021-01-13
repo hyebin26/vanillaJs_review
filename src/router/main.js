@@ -19,7 +19,7 @@ module.exports = function (app) {
   });
 
   app.get("/review/new", function (req, res) {
-    res.render(__dirname + "../../../views/review.html");
+    res.render(__dirname + "../../../views/addReviewForm.html");
   });
   app.post("/review/new", (req, res) => {
     const title = req.body.title;
@@ -158,7 +158,7 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/review/update/:id/json/edit", (req, res) => {
+  app.post("/review/update/:id/json/delete", (req, res) => {
     let content_id = req.body.contentId;
     let contentDeleteSql = "delete from reviewData where id=?";
     conn.query(contentDeleteSql, [content_id], (err, result) => {
@@ -166,6 +166,41 @@ module.exports = function (app) {
         console.log(err);
         throw new Error();
       }
+      console.log("Delete !!");
     });
+  });
+
+  app.get("/review/update/:id/edit/json", (req, res) => {
+    const reviewEditId = req.params.id;
+    const reviewEditSql = "select * from reviewData where id=?";
+    conn.query(reviewEditSql, [reviewEditId], (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      }
+      res.send(result);
+    });
+  });
+  app.post("/review/update/:id/edit/json", (req, res) => {
+    const editId = req.params.id;
+    const title = req.body.title;
+    const sub_title = req.body;
+    const category = req.body;
+    const content = req.body;
+    const editQuery =
+      "update reviewData set title=?,sub_title=?,category=?,content=? where id=?";
+    conn.query(
+      editQuery,
+      [title, sub_title, category, content, editId],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          throw new Error();
+        }
+      }
+    );
+  });
+  app.get("/review/update/:id/edit", (req, res) => {
+    res.render(__dirname + "../../../views/editReviewForm.html");
   });
 };

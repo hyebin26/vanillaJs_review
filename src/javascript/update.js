@@ -17,14 +17,33 @@ const clickUpdateDelete = async (e) => {
   };
   if (confirm("삭제하시겠습니까?")) {
     location.href = "/review";
-    await fetch(location.href + "/json/edit", opt);
+    await fetch(location.href + "/json/delete", opt);
   } else {
     return false;
   }
 };
 
+const clickUpdateEdit = async (e) => {
+  e.preventDefault();
+  const dataset = document.querySelector(".update_content_container").dataset
+    .contentId;
+  const opt = {
+    method: "POST",
+    body: JSON.stringify({
+      contentId: dataset,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  location.href = location.href + "/edit";
+  await fetch(location.href + "/json/edit", opt);
+};
+
 const showUpdateData = (item) => {
-  const updateDelte = document.querySelector(".update_edit_delete");
+  const updateDelete = document.querySelector(".update_edit_delete");
+  const updateEdit = document.querySelector(".update_edit_edit");
+
   const updateTitle = document.querySelector(".update_title");
   const updateCategory = document.querySelector(".update_category");
   const updateSubTitle = document.querySelector(".update_sub_title");
@@ -36,7 +55,8 @@ const showUpdateData = (item) => {
   updateCategory.innerText = "#" + item.category;
   updateSubTitle.innerText = "#" + item.sub_title;
   updateDescription.innerText = item.content;
-  updateDelte.addEventListener("click", clickUpdateDelete);
+  updateEdit.addEventListener("click", clickUpdateEdit);
+  updateDelete.addEventListener("click", clickUpdateDelete);
 };
 
 const updateInit = () => {

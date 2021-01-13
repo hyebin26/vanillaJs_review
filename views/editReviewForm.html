@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리뷰작성하기</title>
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/review.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/review">REVIEW</a>
+      </div>
+      <nav class="nav">
+        <a href="#">영화</a>
+        <a href="#">책</a>
+        <a href="#">앨범</a>
+      </nav>
+      <div class="search">
+        <a href="#">내 정보</a>
+        <a href="login.html">로그인</a>
+        <input type="text" placeholder="리뷰 검색하기" />
+      </div>
+    </header>
+    <main>
+      <form class="edit_form">
+        <div class="review_container">
+          <select name="category" id="category" class="edit_category">
+            <option value="영화">영화</option>
+            <option value="도서">도서</option>
+            <option value="앨범">앨범</option>
+          </select>
+          <input
+            class="edit_title"
+            type="text"
+            name="title"
+            placeholder="글의 제목을 입력해주세요"
+          />
+          <input
+            class="edit_sub_title"
+            type="text"
+            name="subTitle"
+            placeholder="감상한 작품의 제목을 입력해주세요"
+          />
+        </div>
+        <textarea
+          name="content"
+          class="edit_content"
+          id="review_textarea"
+        ></textarea>
+      </form>
+      <div class="btn_container">
+        <button class="review_btn">작성</button>
+      </div>
+    </main>
+    <footer>
+      <h1>Footer</h1>
+    </footer>
+    <script src="/javascript/edit_review.js"></script>
+  </body>
+</html>
