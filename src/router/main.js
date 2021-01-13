@@ -140,6 +140,7 @@ module.exports = function (app) {
       }
     });
   });
+
   app.post("/review/update/:id/json/comment/edit", (req, res) => {
     let editContent = req.body.editContent;
     let editTime = req.body.editTime;
@@ -153,6 +154,17 @@ module.exports = function (app) {
         throw new Error();
       } else {
         console.log("Edit!!");
+      }
+    });
+  });
+
+  app.post("/review/update/:id/json/edit", (req, res) => {
+    let content_id = req.body.contentId;
+    let contentDeleteSql = "delete from reviewData where id=?";
+    conn.query(contentDeleteSql, [content_id], (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
       }
     });
   });

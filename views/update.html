@@ -34,6 +34,11 @@
       <div class="update_main">
         <div class="update_content_container">
           <p class="update_detail">Review</p>
+          <div class="update_edit_div">
+            <a href="#" class="update_edit_edit">Edit</a>
+            <span>/</span>
+            <button class="update_edit_delete">Delete</button>
+          </div>
           <p class="update_title"></p>
           <p class="update_description"></p>
           <div class="update_content_sub_container">
@@ -42,11 +47,7 @@
           </div>
           <div class="comment_container">
             <div class="comment_input" method="POST">
-              <form
-                class="comment_form"
-                method="POST"
-                action="/review/upate/1/json/comment"
-              >
+              <form class="comment_form">
                 <p class="comment_title">댓글</p>
                 <div class="comment_input_box">
                   <input

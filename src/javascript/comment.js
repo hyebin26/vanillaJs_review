@@ -106,7 +106,7 @@ const showComment = (comment) => {
   updateForm.reset();
 };
 
-const clickCommentAddBtn = async (event) => {
+const clickCommentAdd = async (event) => {
   event.preventDefault();
   const updateCommentInput = document.querySelector(".update_comment_input");
   if (updateCommentInput.value === "") {
@@ -139,7 +139,7 @@ const fetchComment = async () => {
     .then((data) => (commentData = data))
     .catch((err) => new Error(err));
   commentData.map((comment) => showComment(comment));
-  updateAddFormBtn.addEventListener("click", clickCommentAddBtn);
+  updateAddFormBtn.addEventListener("click", clickCommentAdd);
 };
 
 const commentInit = () => {
