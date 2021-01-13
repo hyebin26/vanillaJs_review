@@ -13,27 +13,45 @@ const loadDate = () => {
   return time;
 };
 
-const handleRevise = (e) => {
-  const reviseContent = e.target.parentNode.previousSibling;
-  const reviseList = reviseContent.parentNode;
-  const commentDate = document.createElement("p");
+const clickCommentEdit = async (e) => {
+  const editContent = e.target.parentNode.previousSibling;
+  const editList = editContent.parentNode;
+  const editSpan = document.createElement("span");
+  const editDate = e.target.parentNode.nextElementSibling;
+  editSpan.innerText = editContent.value;
+  editDate.innerText = loadDate();
+  editSpan.classList.add("comments_feed_content");
 
-  const reviseSpan = document.createElement("span");
-  reviseSpan.innerText = reviseContent.value;
-  reviseSpan.classList.add("comments_feed_content");
-
-  reviseList.replaceChild(reviseSpan, reviseContent);
+  editList.replaceChild(editSpan, editContent);
   e.target.parentNode.removeChild(e.target);
 
-  commentDate.innerText = loadDate();
+  await fetch(location.href + "/json/comment/edit", {
+    method: "POST",
+    body: JSON.stringify({
+      editDataset: editList.dataset.commentNum,
+      editTime: loadDate(),
+      editContent: editSpan.innerText,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
-const handleDelete = (e) => {
+const handleCommentDelete = async (e) => {
   e.preventDefault();
-
   const list = e.target.parentNode.parentNode;
   updateCommentContainer.removeChild(list);
+  await fetch(location.href + "/json/comment/delete", {
+    method: "POST",
+    body: JSON.stringify({
+      list_num: list.dataset,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
-const handleUpdate = (e) => {
+const handleCommentUpdate = (e) => {
   e.preventDefault();
   const content = e.target.parentNode.previousSibling;
   const feedList = content.parentNode;
@@ -47,7 +65,7 @@ const handleUpdate = (e) => {
   feedList.replaceChild(newInput, content);
   e.target.parentNode.appendChild(insertBtn);
 
-  insertBtn.addEventListener("click", handleRevise);
+  insertBtn.addEventListener("click", clickCommentEdit);
 };
 
 const showComment = (comment) => {
@@ -59,6 +77,8 @@ const showComment = (comment) => {
   const commentFeedDeleteBtn = document.createElement("button");
   const commentFeedUpdateBtn = document.createElement("button");
   const commentDate = document.createElement("p");
+
+  commentList.dataset.commentNum = comment.comment_num;
 
   commentList.classList.add("comments_feed");
   commentUserId.classList.add("comments_feed_userId");
@@ -77,12 +97,12 @@ const showComment = (comment) => {
   commentFeedDiv.appendChild(commentFeedDeleteBtn);
   commentFeedUpdateBtn.innerText = "수정";
   commentFeedDeleteBtn.innerText = "삭제";
-  commentDate.innerText = loadDate();
+  commentDate.innerText = comment.update_time;
   commentUserId.innerText = comment.comment_id;
   commentContent.innerText = comment.comment_content;
 
-  commentFeedDeleteBtn.addEventListener("click", handleDelete);
-  commentFeedUpdateBtn.addEventListener("click", handleUpdate);
+  commentFeedDeleteBtn.addEventListener("click", handleCommentDelete);
+  commentFeedUpdateBtn.addEventListener("click", handleCommentUpdate);
   updateForm.reset();
 };
 
@@ -92,34 +112,32 @@ const clickCommentAddBtn = async (event) => {
   if (updateCommentInput.value === "") {
     return false;
   } else {
+    const addComment = {
+      comment_id: "hyebin",
+      comment_content: updateCommentInput.value,
+      create_time: loadDate(),
+      update_time: loadDate(),
+    };
     const option = {
       method: "POST",
-      body: JSON.stringify({
-        comment_id: "hyebin",
-        comment_content: updateCommentInput.value,
-        create_time: loadDate(),
-        update_time: "",
-      }),
+      body: JSON.stringify(addComment),
       headers: {
         "Content-Type": "application/json",
       },
     };
-    const addComment = await fetch(location.href + "/json/comment", option) //
-      .then((data) => data.json())
-      .then((comments) => comments.map((comment) => showComment(comment)));
+    await fetch(location.href + "/json/comment", option); //
+    showComment(addComment);
   }
 };
 
 const fetchComment = async () => {
   let commentData = {};
-  const commentForm = document.querySelector(".comment_form");
   const updateAddFormBtn = document.querySelector(".comment_add_btn");
 
-  let fetchCommentData = await fetch(location.href + "/json/comment") //
+  await fetch(location.href + "/json/comment") //
     .then((res) => res.json()) //
     .then((data) => (commentData = data))
-    .catch((err) => console.log(err));
-
+    .catch((err) => new Error(err));
   commentData.map((comment) => showComment(comment));
   updateAddFormBtn.addEventListener("click", clickCommentAddBtn);
 };

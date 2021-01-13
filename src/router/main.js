@@ -128,4 +128,32 @@ module.exports = function (app) {
       }
     });
   });
+  app.post("/review/update/:id/json/comment/delete", (req, res) => {
+    let commentNum = req.body.list_num.commentNum;
+    const commentDeleteSql = "delete from commentData where comment_num=?";
+    conn.query(commentDeleteSql, [commentNum], (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      } else {
+        console.log("Delete");
+      }
+    });
+  });
+  app.post("/review/update/:id/json/comment/edit", (req, res) => {
+    let editContent = req.body.editContent;
+    let editTime = req.body.editTime;
+    let editNum = req.body.editDataset;
+    console.log(editContent, editTime, editNum);
+    const editSql =
+      "update commentData set comment_content=?,update_time=? where comment_num=?";
+    conn.query(editSql, [editContent, editTime, editNum], (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      } else {
+        console.log("Edit!!");
+      }
+    });
+  });
 };
