@@ -12,7 +12,6 @@ const handleReviewEdit = async () => {
   const categoryValue = document.querySelector(".edit_category").value;
   const contentValue = document.querySelector(".edit_content").value;
   const editDataset = document.querySelector(".edit_form").dataset.edit_num;
-  console.log(editDataset);
   const opt = {
     method: "POST",
     body: JSON.stringify({
@@ -36,6 +35,7 @@ const showEditData = (review) => {
   const editCategory = document.querySelector(".edit_category");
   const editBtn = document.querySelector(".review_btn");
   const editForm = document.querySelector(".edit_form");
+  const currentUser = sessionStorage.getItem("currentUser");
 
   editForm.dataset.edit_num = review.id;
   editTitle.value = review.title;

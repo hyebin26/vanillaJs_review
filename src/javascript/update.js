@@ -5,39 +5,53 @@ const loadUpdate = async () => {
 };
 
 const clickUpdateDelete = async (e) => {
-  const contentDataset = e.target.parentNode.parentNode.dataset.contentId;
-  const opt = {
-    method: "POST",
-    body: JSON.stringify({
-      contentId: contentDataset,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-  if (confirm("삭제하시겠습니까?")) {
-    location.href = "/review";
-    await fetch(location.href + "/json/delete", opt);
+  const currentUser = sessionStorage.getItem("currentUser");
+  const userValue = document.querySelector(".user_name").innerText;
+  if (currentUser == userValue) {
+    const contentDataset = e.target.parentNode.parentNode.dataset.contentId;
+    const opt = {
+      method: "POST",
+      body: JSON.stringify({
+        contentId: contentDataset,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    if (confirm("삭제하시겠습니까?")) {
+      location.href = "/review";
+      await fetch(location.href + "/json/delete", opt);
+    } else {
+      return false;
+    }
   } else {
+    alert("권한이 없습니다.");
     return false;
   }
 };
 
 const clickUpdateEdit = async (e) => {
-  e.preventDefault();
-  const dataset = document.querySelector(".update_content_container").dataset
-    .contentId;
-  const opt = {
-    method: "POST",
-    body: JSON.stringify({
-      contentId: dataset,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-  location.href = location.href + "/edit";
-  await fetch(location.href + "/json/edit", opt);
+  const currentUser = sessionStorage.getItem("currentUser");
+  const userValue = document.querySelector(".user_name").innerText;
+  if (currentUser == userValue) {
+    const dataset = document.querySelector(".update_content_container").dataset
+      .contentId;
+    const opt = {
+      method: "POST",
+      body: JSON.stringify({
+        contentId: dataset,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    location.href = location.href + "/edit";
+    await fetch(location.href + "/json/edit", opt);
+  } else {
+    e.preventDefault();
+    alert("권한이 없습니다.");
+    return false;
+  }
 };
 
 const showUpdateData = (item) => {
@@ -52,12 +66,13 @@ const showUpdateData = (item) => {
   const updateCurrentUser = document.querySelector(".user_name");
   const currentUser = sessionStorage.getItem("currentUser");
 
-  updateCurrentUser.innerText = currentUser;
+  updateCurrentUser.innerText = item.userId;
   updateContainer.dataset.contentId = item.id;
   updateTitle.innerText = item.title;
   updateCategory.innerText = "#" + item.category;
   updateSubTitle.innerText = "#" + item.sub_title;
   updateDescription.innerText = item.content;
+
   updateEdit.addEventListener("click", clickUpdateEdit);
   updateDelete.addEventListener("click", clickUpdateDelete);
 };
