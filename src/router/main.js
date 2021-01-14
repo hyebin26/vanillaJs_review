@@ -12,9 +12,6 @@ module.exports = function (app) {
     });
   });
   app.get("/review", function (req, res) {
-    // conn.query("select * from review", (err, results) => {
-    //   res.render(__dirname + "../../../views/index.html", { result: result });
-    // });
     res.render(__dirname + "../../../views/index.html");
   });
   app.get("/review/login", (req, res) => {
@@ -49,6 +46,10 @@ module.exports = function (app) {
         }
       }
     );
+  });
+  app.post("/review/sign_in", (req, res) => {
+    console.log(req.body);
+    res.json(req.body);
   });
 
   app.get("/review/update/:id", (req, res) => {

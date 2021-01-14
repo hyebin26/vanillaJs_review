@@ -1,4 +1,6 @@
-const clickLogin = () => {
+const clickLogin = async (e) => {
+  e.preventDefault();
+  const loginForm = document.querySelector(".login_form");
   const loginId = document.querySelector(".login_id").value;
   const loginPassword = document.querySelector(".login_password").value;
   const getUser = JSON.parse(localStorage.getItem("user")).map((user) => user);
@@ -13,11 +15,11 @@ const clickLogin = () => {
       return false;
     }
   });
-
   if (checkUser.every((user) => user == false)) {
     alert("아이디 혹은 비밀번호가 틀렸습니다.");
   } else {
-    location.href("/review");
+    location.href = "/review";
+    sessionStorage.setItem("currentUser", loginId);
   }
 };
 

@@ -1,4 +1,4 @@
-const dataLoad = async () => {
+const loadReview = async () => {
   const contents = await fetch("http://localhost:3000/json") //
     .then((result) => result.json());
   contents.map((item) => showMainData(item));
@@ -55,6 +55,6 @@ const showMainData = (item) => {
 };
 
 const init = () => {
-  dataLoad();
+  loadReview();
 };
 init();
