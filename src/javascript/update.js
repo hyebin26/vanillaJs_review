@@ -49,7 +49,10 @@ const showUpdateData = (item) => {
   const updateSubTitle = document.querySelector(".update_sub_title");
   const updateDescription = document.querySelector(".update_description");
   const updateContainer = document.querySelector(".update_content_container");
+  const updateCurrentUser = document.querySelector(".user_name");
+  const currentUser = sessionStorage.getItem("currentUser");
 
+  updateCurrentUser.innerText = currentUser;
   updateContainer.dataset.contentId = item.id;
   updateTitle.innerText = item.title;
   updateCategory.innerText = "#" + item.category;

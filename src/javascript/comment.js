@@ -108,12 +108,13 @@ const showComment = (comment) => {
 
 const clickCommentAddBtn = async (event) => {
   event.preventDefault();
+  const currentUser = sessionStorage.getItem("currentUser");
   const updateCommentInput = document.querySelector(".update_comment_input");
   if (updateCommentInput.value === "") {
     return false;
   } else {
     const addComment = {
-      comment_id: "hyebin",
+      comment_id: currentUser,
       comment_content: updateCommentInput.value,
       create_time: loadDate(),
       update_time: loadDate(),

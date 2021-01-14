@@ -29,9 +29,9 @@ module.exports = function (app) {
   app.post("/review/new", (req, res) => {
     const title = req.body.title;
     const category = req.body.category;
-    const subTitle = req.body.subTitle;
+    const subTitle = req.body.sub_title;
     const content = req.body.content;
-    const userId = "Hyebin";
+    const userId = req.body.userId;
     const addSql =
       "insert into reviewData (title,content,category,sub_title,userId) values(?,?,?,?,?)";
     conn.query(
@@ -46,10 +46,6 @@ module.exports = function (app) {
         }
       }
     );
-  });
-  app.post("/review/sign_in", (req, res) => {
-    console.log(req.body);
-    res.json(req.body);
   });
 
   app.get("/review/update/:id", (req, res) => {
