@@ -1,7 +1,7 @@
 const focusoutId = (e) => {
   const input = e.target;
   const getUser = JSON.parse(localStorage.getItem("user"));
-  const uid = getUser.map((user) => user.id);
+  const uid = getUser == null ? [] : getUser.map((user) => user.id);
 
   if (input.value === "") {
     input.nextElementSibling.innerHTML = "필수입력항목입니다.";
@@ -9,7 +9,7 @@ const focusoutId = (e) => {
   } else if (input.value >= 6) {
     input.nextElementSibling.innerHTML = "아이디는 6글자 이상이어야 합니다.";
     input.classList.add("js_red");
-  } else if (uid.map((userId) => userId) == id.value) {
+  } else if (uid.map((userId) => userId) == input.value) {
     input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
     input.classList.add("js_red");
   } else {
@@ -54,7 +54,7 @@ const focusoutSecondPassword = (e) => {
 const focusoutNickname = (e) => {
   const input = e.target;
   const getUser = JSON.parse(localStorage.getItem("user"));
-  const userName = getUser.map((user) => user.nickname);
+  const userName = getUser == null ? [] : getUser.map((user) => user.nickname);
   console.log(userName.map((map) => map) == input.value);
 
   if (input.value.length < 2) {
@@ -76,11 +76,12 @@ const clickSubmit = (e) => {
   e.preventDefault();
   const allInput = document.getElementsByTagName("input");
   const allInputArr = [...allInput];
-  allInputArr.map((item) => console.log(item.value == ""));
   const idValue = document.querySelector(".input_id").value;
   const passwordValue = document.querySelector(".input_password").value;
   const password2Value = document.querySelector(".input_password2").value;
   const nicknameValue = document.querySelector(".input_nickname").value;
+  const getUser = JSON.parse(localStorage.getItem("user"));
+  const user = getUser == null ? [] : getUser;
 
   const arrInputEvery = allInputArr.every(
     (item) => !item.classList.contains("js_red")
@@ -93,16 +94,12 @@ const clickSubmit = (e) => {
     !passwordValue == ""
   ) {
     alert("회원가입성공!");
-    localStorage.setItem(
-      "user",
-      JSON.stringify([
-        {
-          id: idValue,
-          password: passwordValue,
-          nickname: nicknameValue,
-        },
-      ])
-    );
+    user.push({
+      id: idValue,
+      password: passwordValue,
+      nickname: nicknameValue,
+    });
+    localStorage.setItem("user", JSON.stringify(user));
     location.href = "/review/login";
   } else {
     alert("다시해주세요!");
