@@ -1,20 +1,21 @@
-const handleId = () => {
-  const id = document.querySelector(".input_id");
-  const jsId = document.querySelector(".js_id");
+const focusoutId = (e) => {
+  const input = e.target;
+  const getUser = JSON.parse(localStorage.getItem("user"));
+  const uid = getUser.map((user) => user.id);
 
-  id.addEventListener("focusout", () => {
-    if (id.value === "") {
-      jsId.innerHTML = "필수입력항목입니다.";
-      id.classList.add("js_red");
-    } else {
-      jsId.innerHTML = "";
-      if (id.classList.contains("js_red")) {
-        id.classList.remove("js_red");
-      } else {
-        return;
-      }
-    }
-  });
+  if (input.value === "") {
+    input.nextElementSibling.innerHTML = "필수입력항목입니다.";
+    input.classList.add("js_red");
+  } else if (input.value >= 6) {
+    input.nextElementSibling.innerHTML = "아이디는 6글자 이상이어야 합니다.";
+    input.classList.add("js_red");
+  } else if (uid.map((userId) => userId) == id.value) {
+    input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
+    input.classList.add("js_red");
+  } else {
+    input.nextElementSibling.innerHTML = "";
+    input.classList.remove("js_red");
+  }
 };
 
 const focusoutFirstPassword = (e) => {
@@ -50,16 +51,11 @@ const focusoutSecondPassword = (e) => {
   }
 };
 
-const handlePassword = () => {
-  const password = document.querySelector(".input_password");
-  const password2 = document.querySelector(".input_password2");
-
-  password.addEventListener("focusout", focusoutFirstPassword);
-  password2.addEventListener("focusout", focusoutSecondPassword);
-};
-
 const focusoutNickname = (e) => {
   const input = e.target;
+  const getUser = JSON.parse(localStorage.getItem("user"));
+  const userName = getUser.map((user) => user.nickname);
+  console.log(userName.map((map) => map) == input.value);
 
   if (input.value.length < 2) {
     input.nextElementSibling.innerHTML = "필수입력항목입니다.";
@@ -67,60 +63,67 @@ const focusoutNickname = (e) => {
   } else if (input.value.length >= 15) {
     input.nextElementSibling.innerHTML = "초과되었습니다.";
     input.classList.add("js_red");
+  } else if (userName.map((user) => user) == input.value) {
+    input.nextElementSibling.innerHTML = "이미 존재합니다.";
+    input.classList.add("js_red");
   } else {
     input.nextElementSibling.innerHTML = "";
     input.classList.remove("js_red");
   }
 };
 
-const handleNickname = () => {
-  const nickname = document.querySelector(".input_nickname");
-  nickname.addEventListener("focusout", focusoutNickname);
-};
-
-const handleSubmit = (e) => {
+const clickSubmit = (e) => {
   e.preventDefault();
   const allInput = document.getElementsByTagName("input");
   const allInputArr = [...allInput];
+  allInputArr.map((item) => console.log(item.value == ""));
   const idValue = document.querySelector(".input_id").value;
   const passwordValue = document.querySelector(".input_password").value;
+  const password2Value = document.querySelector(".input_password2").value;
   const nicknameValue = document.querySelector(".input_nickname").value;
 
-  allInputArr.every((item) => {
-    if (
-      !item.classList.contains("js_red") &&
-      idValue == "" &&
-      passwordValue == "" &&
-      nicknameValue == ""
-    ) {
-      alert("다시해주세요!");
-    } else {
-      alert("회원가입성공!");
-      localStorage.setItem(
-        "user",
-        JSON.stringify([
-          {
-            id: idValue,
-            password: passwordValue,
-            nickname: nicknameValue,
-          },
-        ])
-      );
-      location.href = "/review/login";
-    }
-  });
+  const arrInputEvery = allInputArr.every(
+    (item) => !item.classList.contains("js_red")
+  );
+  if (
+    arrInputEvery &&
+    !idValue == "" &&
+    !nicknameValue == "" &&
+    !password2Value == "" &&
+    !passwordValue == ""
+  ) {
+    alert("회원가입성공!");
+    localStorage.setItem(
+      "user",
+      JSON.stringify([
+        {
+          id: idValue,
+          password: passwordValue,
+          nickname: nicknameValue,
+        },
+      ])
+    );
+    location.href = "/review/login";
+  } else {
+    alert("다시해주세요!");
+  }
 };
 
-const submitUser = () => {
+const handleSignUp = () => {
+  const nickname = document.querySelector(".input_nickname");
+  const password = document.querySelector(".input_password");
+  const password2 = document.querySelector(".input_password2");
+  const id = document.querySelector(".input_id");
   const signBtn = document.querySelector(".sign_in_btn");
 
-  signBtn.addEventListener("click", handleSubmit);
+  id.addEventListener("focusout", focusoutId);
+  nickname.addEventListener("focusout", focusoutNickname);
+  password.addEventListener("focusout", focusoutFirstPassword);
+  password2.addEventListener("focusout", focusoutSecondPassword);
+  signBtn.addEventListener("click", clickSubmit);
 };
 
-const init = () => {
-  handleId();
-  handlePassword();
-  handleNickname();
-  submitUser();
+const signUpInit = () => {
+  handleSignUp();
 };
-init();
+signUpInit();
