@@ -109,7 +109,7 @@ const clickSubmit = (e) => {
   }
 };
 
-const handleSignUp = () => {
+const signUpInit = () => {
   const nickname = document.querySelector(".input_nickname");
   const password = document.querySelector(".input_password");
   const password2 = document.querySelector(".input_password2");
@@ -121,9 +121,5 @@ const handleSignUp = () => {
   password.addEventListener("focusout", focusoutFirstPassword);
   password2.addEventListener("focusout", focusoutSecondPassword);
   signBtn.addEventListener("click", clickSubmit);
-};
-
-const signUpInit = () => {
-  handleSignUp();
 };
 signUpInit();
