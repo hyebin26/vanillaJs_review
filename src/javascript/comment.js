@@ -77,6 +77,7 @@ const showComment = (comment) => {
   const commentFeedUpdateBtn = document.createElement("button");
   const commentDate = document.createElement("p");
   const updateCommentContainer = document.querySelector(".comments");
+  const currentUser = sessionStorage.getItem("currentUser");
 
   commentList.dataset.commentNum = comment.comment_num;
 
@@ -84,8 +85,7 @@ const showComment = (comment) => {
   commentUserId.classList.add("comments_feed_userId");
   commentContent.classList.add("comments_feed_content");
   commentFeedDiv.classList.add("comment_feed_div");
-  commentFeedDeleteBtn.classList.add("comment_delete_btn");
-  commentFeedUpdateBtn.classList.add("comment_update_btn");
+
   commentDate.classList.add("comment_date");
 
   updateCommentContainer.appendChild(commentList);
@@ -93,16 +93,22 @@ const showComment = (comment) => {
   commentList.appendChild(commentContent);
   commentList.appendChild(commentFeedDiv);
   commentList.appendChild(commentDate);
-  commentFeedDiv.appendChild(commentFeedUpdateBtn);
-  commentFeedDiv.appendChild(commentFeedDeleteBtn);
-  commentFeedUpdateBtn.innerText = "수정";
-  commentFeedDeleteBtn.innerText = "삭제";
+
   commentDate.innerText = comment.update_time;
   commentUserId.innerText = comment.comment_id;
   commentContent.innerText = comment.comment_content;
 
-  commentFeedDeleteBtn.addEventListener("click", handleCommentDelete);
-  commentFeedUpdateBtn.addEventListener("click", handleCommentUpdate);
+  if (currentUser == comment.comment_id) {
+    commentFeedDiv.appendChild(commentFeedUpdateBtn);
+    commentFeedDiv.appendChild(commentFeedDeleteBtn);
+    commentFeedDeleteBtn.classList.add("comment_delete_btn");
+    commentFeedUpdateBtn.classList.add("comment_update_btn");
+    commentFeedUpdateBtn.innerText = "수정";
+    commentFeedDeleteBtn.innerText = "삭제";
+    commentFeedDeleteBtn.addEventListener("click", handleCommentDelete);
+    commentFeedUpdateBtn.addEventListener("click", handleCommentUpdate);
+  }
+
   updateForm.reset();
 };
 
