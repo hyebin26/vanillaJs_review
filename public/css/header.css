@@ -26,6 +26,7 @@ header {
   display: flex;
   font-size: 1.2rem;
   border-bottom: 1px solid var(--border);
+  align-items: center;
 }
 header a:hover {
   color: var(--a_hover);
@@ -53,8 +54,23 @@ header a:hover {
 
 .search input {
   border: 1px solid var(--border);
-  border-radius: 5%;
-  padding: 0.2rem 0.3rem;
+  padding: 0.4rem 0.5rem;
   width: var(--input_width);
   outline: none;
+  border-right: none;
+}
+.search_input_btn {
+  outline: none;
+  border: 1px solid var(--border);
+  border-left: none;
+  cursor: pointer;
+  margin-left: -0.1rem;
+  padding-right: 1rem;
+  background-color: white;
+}
+.search_input_btn i {
+  margin-left: 1.2rem;
+}
+.search_form {
+  display: flex;
 }

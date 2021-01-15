@@ -13,6 +13,10 @@
       integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Yusei+Magic&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
@@ -27,7 +31,12 @@
       <div class="search">
         <a href="/review/profile" class="search_profile">내 정보</a>
         <a href="/review/login" class="search_loginBtn">로그인</a>
-        <input type="text" placeholder="리뷰 검색하기" />
+        <form class="search_form" action="/review/search">
+          <input type="text" placeholder="리뷰 검색하기" />
+          <button class="search_input_btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
       </div>
     </header>
     <main>
@@ -35,7 +44,7 @@
         <div class="update_content_container">
           <p class="update_detail">Review</p>
           <div class="update_edit_div">
-            <a href="/review/new" class="update_edit_edit">Edit</a>
+            <a class="update_edit_edit">Edit</a>
             <span>/</span>
             <button class="update_edit_delete">Delete</button>
           </div>
@@ -91,7 +100,7 @@
           </ul>
           <div class="update_user_sub_container">
             <p>리뷰 보러가기 !</p>
-            <a href="/review">전체글 보러가기</a>
+            <a href="/review/profile">전체글 보러가기</a>
           </div>
         </div>
       </div>

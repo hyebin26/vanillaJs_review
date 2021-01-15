@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/review.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Yusei+Magic&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
@@ -21,7 +32,12 @@
       <div class="search">
         <a href="/review/profile" class="search_profile">내 정보</a>
         <a href="/review/login" class="search_loginBtn">로그인</a>
-        <input type="text" placeholder="리뷰 검색하기" />
+        <form class="search_form" action="/review/search">
+          <input type="text" placeholder="리뷰 검색하기" />
+          <button class="search_input_btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
       </div>
     </header>
     <main>

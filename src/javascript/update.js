@@ -25,12 +25,14 @@ const clickUpdateDelete = async (e) => {
       return false;
     }
   } else {
+    e.preventDefault();
     alert("권한이 없습니다.");
     return false;
   }
 };
 
 const clickUpdateEdit = async (e) => {
+  e.preventDefault();
   const currentUser = sessionStorage.getItem("currentUser");
   const userValue = document.querySelector(".user_name").innerText;
   if (currentUser == userValue) {
@@ -49,6 +51,7 @@ const clickUpdateEdit = async (e) => {
     await fetch(location.href + "/json/edit", opt);
   } else {
     e.preventDefault();
+
     alert("권한이 없습니다.");
     return false;
   }
@@ -64,7 +67,6 @@ const showUpdateData = (item) => {
   const updateDescription = document.querySelector(".update_description");
   const updateContainer = document.querySelector(".update_content_container");
   const updateCurrentUser = document.querySelector(".user_name");
-  const currentUser = sessionStorage.getItem("currentUser");
 
   updateCurrentUser.innerText = item.userId;
   updateContainer.dataset.contentId = item.id;
@@ -73,6 +75,7 @@ const showUpdateData = (item) => {
   updateSubTitle.innerText = "#" + item.sub_title;
   updateDescription.innerText = item.content;
 
+  updateEdit.setAttribute("href", location.href + "/edit");
   updateEdit.addEventListener("click", clickUpdateEdit);
   updateDelete.addEventListener("click", clickUpdateDelete);
 };

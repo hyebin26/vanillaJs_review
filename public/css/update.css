@@ -8,6 +8,10 @@
   --font_sub: #757575;
 }
 
+* {
+  font-family: "Jua", sans-serif;
+}
+
 main {
   width: 100%;
 }

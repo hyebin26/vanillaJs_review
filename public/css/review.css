@@ -6,6 +6,10 @@
   --a_hover: gold;
 }
 
+* {
+  font-family: "Jua", sans-serif;
+  font-size: 1.1rem;
+}
 main {
   width: var(--first_width);
   margin: 0 auto;

@@ -13,11 +13,6 @@
       integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jua&family=Yusei+Magic&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <header>
@@ -30,15 +25,10 @@
         <a href="#">앨범</a>
       </nav>
       <div class="search">
-        <a href="/review/signUp" class="search_profile">회원가입</a>
+        <a href="/review/profile" class="search_profile">내 정보</a>
         <a href="/review/login" class="search_loginBtn">로그인</a>
-        <form class="search_form" action="/review/search">
-          <input
-            type="text"
-            placeholder="리뷰 검색하기"
-            name="query"
-            class="search_input"
-          />
+        <form class="search_form"">
+          <input type="text" placeholder="리뷰 검색하기" class="search_input" />
           <button class="search_input_btn">
             <i class="fas fa-search"></i>
           </button>
@@ -55,7 +45,6 @@
     <footer>
       <h1>Footer</h1>
     </footer>
-    <script src="./javascript/index.js"></script>
     <script src="./javascript/user.js"></script>
     <script src="./javascript/search.js"></script>
   </body>

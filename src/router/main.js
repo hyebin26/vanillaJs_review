@@ -226,4 +226,8 @@ module.exports = function (app) {
       }
     });
   });
+  app.get("/review/search", (req, res) => {
+    console.log(req.query.query);
+    res.render(__dirname + "../../../views/search.html");
+  });
 };

@@ -10,10 +10,12 @@ const loadUser = () => {
   const profileBtn = document.querySelector(".search_profile");
 
   if (currentUser == null) {
-    return false;
+    profileBtn.setAttribute("href", "/review/signUp");
+    profileBtn.innerText = "회원가입";
   } else {
     loginBtn.innerText = "로그아웃";
     loginBtn.addEventListener("click", clickLogoutBtn);
+    profileBtn.setAttribute("href", "/review/profile");
     profileBtn.innerText = currentUser;
   }
 };

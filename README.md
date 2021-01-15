@@ -1,5 +1,10 @@
 ### 이번에 한 것
-1. profile html 추가
-2. profile js 구현
+ 1. font-family 주고 검색창 구현 
+ 2. html파일을 정리
+
 ### 다음에 할 것
-1. 검색기능
+ 1. nav 클릭 시 html 구현 
+ 2. 검색기능 
+ 3. 이미지 인풋
+ 4. mysql 비밀번호 .env로 저장
+ 5. 웹팩 
