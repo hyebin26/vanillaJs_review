@@ -1,7 +1,7 @@
 :root {
   --background: white;
   --first_width: 75rem;
-  --border: rgba(0, 0, 0, 0.816);
+  --border: #c9c8c8;
   --input_width: 15rem;
   --text_description: rgb(68, 67, 67);
   --a_hover: gold;
@@ -67,7 +67,6 @@ main {
 }
 .content_text_container {
   width: 90%;
-  padding: 0 1rem;
 }
 
 .content_user_container {

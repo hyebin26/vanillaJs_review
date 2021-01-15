@@ -230,4 +230,45 @@ module.exports = function (app) {
     console.log(req.query.query);
     res.render(__dirname + "../../../views/search.html");
   });
+  app.get("/review/movie", (req, res) => {
+    res.render(__dirname + "../../../views/movie.html");
+  });
+  app.get("/review/movie/json", (req, res) => {
+    const movieSql = "select * from reviewData where category='영화'";
+    conn.query(movieSql, (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      }
+      res.send(result);
+    });
+  });
+
+  app.get("/review/book", (req, res) => {
+    res.render(__dirname + "../../../views/book.html");
+  });
+  app.get("/review/book/json", (req, res) => {
+    const bookSql = "select * from reviewData where category='도서'";
+    conn.query(bookSql, (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      }
+      res.send(result);
+    });
+  });
+  
+  app.get("/review/album", (req, res) => {
+    res.render(__dirname + "../../../views/album.html");
+  });
+  app.get("/review/album/json", (req, res) => {
+    const albumSql = "select * from reviewData where category='앨범'";
+    conn.query(albumSql, (err, result) => {
+      if (err) {
+        console.log(err);
+        throw new Error();
+      }
+      res.send(result);
+    });
+  });
 };
