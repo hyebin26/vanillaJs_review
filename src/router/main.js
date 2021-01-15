@@ -23,6 +23,9 @@ module.exports = function (app) {
   app.get("/review/signUp", (req, res) => {
     res.render(__dirname + "../../../views/signup.html");
   });
+  app.get("/review/profile", (req, res) => {
+    res.render(__dirname + "../../../views/profile.html");
+  });
 
   /**/
   /**/
@@ -209,5 +212,18 @@ module.exports = function (app) {
 
   app.get("/review/update/:id/edit", (req, res) => {
     res.render(__dirname + "../../../views/editReviewForm.html");
+  });
+
+  app.post("/review/profile/json", (req, res) => {
+    const userId = req.body.userId;
+    const profileSql = "select * from reviewData where userId=?";
+
+    conn.query(profileSql, [userId], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
   });
 };

@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Review</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <title>리뷰작성하기</title>
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="#">REVIEW</a>
+        <a href="/review">REVIEW</a>
       </div>
       <nav class="nav">
         <a href="#">영화</a>
@@ -24,17 +24,16 @@
         <input type="text" placeholder="리뷰 검색하기" />
       </div>
     </header>
-
     <main>
-      <div class="write">
-        <a href="/review/new">리뷰작성하기</a>
+      <div class="profile_content_section">
+        <div class="profile_content_length"></div>
+        <ul class="contents_container"></ul>
       </div>
-      <ul class="contents_container"></ul>
     </main>
     <footer>
       <h1>Footer</h1>
     </footer>
-    <script src="./javascript/index.js"></script>
-    <script src="./javascript/user.js"></script>
+    <script src="../javascript/profile.js"></script>
+    <script src="../javascript/user.js"></script>
   </body>
 </html>

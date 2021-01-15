@@ -93,3 +93,7 @@ main {
   color: var(--font_sub);
   padding: 0 0.2rem;
 }
+
+.profile_content_length {
+  padding-bottom: 1rem;
+}
