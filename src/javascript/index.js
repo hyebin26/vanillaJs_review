@@ -2,6 +2,7 @@ const loadReview = async () => {
   const contents = await fetch("http://localhost:3000/json") //
     .then((result) => result.json());
   contents.map((item) => showMainData(item));
+  console.log(contents);
 };
 
 const showMainData = (item) => {
@@ -11,9 +12,9 @@ const showMainData = (item) => {
   const itemTextDiv = document.createElement("div");
   const itemSubTextDiv = document.createElement("div");
   const itemImgDiv = document.createElement("div");
+  const itemImg = document.createElement("img");
   const itemContentDiv = document.createElement("div");
   const itemTitle = document.createElement("p");
-  const itemImg = document.createElement("img");
   const itemDes = document.createElement("p");
   const itemUser = document.createElement("span");
   const itemCategory = document.createElement("span");
@@ -52,6 +53,10 @@ const showMainData = (item) => {
 
   itemLink.setAttribute("href", `/review/update/${item.id}`);
   container.appendChild(itemList);
+
+  if (item.image) {
+    itemImg.setAttribute("src", item.image);
+  }
 };
 
 const init = () => {

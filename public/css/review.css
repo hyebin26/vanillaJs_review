@@ -24,6 +24,8 @@ select {
   width: 100%;
   padding: 0.3rem 0;
   margin: 0.3rem 0;
+  padding-left: 0.2rem;
+  border: 1px solid var(--border);
   outline: none;
 }
 main textarea {
@@ -46,4 +48,19 @@ main textarea {
 }
 #input_submit {
   display: none;
+}
+.add_image {
+  display: none;
+}
+.image_btn {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.add_content {
+  padding-left: 0.1rem;
+  outline: none;
+  border: 1px solid var(--border);
+  height: 25rem;
+  overflow-y: scroll;
+  cursor: text;
 }

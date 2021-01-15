@@ -35,11 +35,12 @@ module.exports = function (app) {
     const subTitle = req.body.sub_title;
     const content = req.body.content;
     const userId = req.body.userId;
+    const image = req.body.image;
     const addSql =
-      "insert into reviewData (title,content,category,sub_title,userId) values(?,?,?,?,?)";
+      "insert into reviewData (title,content,category,sub_title,userId,image) values(?,?,?,?,?,?)";
     conn.query(
       addSql,
-      [title, content, category, subTitle, userId],
+      [title, content, category, subTitle, userId, [image]],
       (error, results) => {
         if (error) {
           console.log(error);
@@ -257,7 +258,7 @@ module.exports = function (app) {
       res.send(result);
     });
   });
-  
+
   app.get("/review/album", (req, res) => {
     res.render(__dirname + "../../../views/album.html");
   });

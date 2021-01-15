@@ -60,12 +60,27 @@
             placeholder="감상한 작품의 제목을 입력해주세요"
             class="add_subTitle"
           />
+          <label for="image_btn" class="image_btn">이미지 추가</label>
+          <input
+            type="file"
+            id="image_btn"
+            class="add_image"
+            accept="image/*"
+          />
+          <span class="image_span"></span>
         </div>
         <textarea
           name="content"
           id="review_textarea"
           class="add_content"
         ></textarea>
+        <!-- <div
+        name="content"
+        id="review_textarea"
+        class="add_content"
+        contenteditable="true"
+      >
+      </div> -->
       </form>
       <div class="btn_container">
         <button class="review_btn">작성</button>
@@ -76,5 +91,6 @@
     </footer>
     <script src="../javascript/add_review.js"></script>
     <script src="../javascript/user.js"></script>
+    <script src="../javascript/image_uploader.js"></script>
   </body>
 </html>

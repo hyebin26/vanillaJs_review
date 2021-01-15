@@ -1,9 +1,9 @@
 const clickAddReviewBtn = async (e) => {
-  e.preventDefault();
   const titleAdd = document.querySelector(".add_title").value;
   const subTitleAdd = document.querySelector(".add_subTitle").value;
   const contentAdd = document.querySelector(".add_content").value;
   const categoryAdd = document.querySelector(".add_category").value;
+  const imageAdd = document.querySelector(".image_span").dataset.image;
   const currentUser = sessionStorage.getItem("currentUser");
 
   const opt = {
@@ -14,6 +14,7 @@ const clickAddReviewBtn = async (e) => {
       content: contentAdd,
       category: categoryAdd,
       sub_title: subTitleAdd,
+      image: imageAdd,
     }),
     headers: {
       "Content-Type": "application/json",
