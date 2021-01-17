@@ -58,7 +58,19 @@ const showMainData = (item) => {
   }
 };
 
+const clickGoToReviewBtn = (e) => {
+  e.preventDefault();
+  const currentUser = sessionStorage.getItem("currentUser");
+  if (currentUser == null) {
+    alert("회원가입을 해주세요");
+  } else {
+    location.href = "/review/new";
+  }
+};
+
 const init = () => {
+  const goToReviewBtn = document.querySelector(".write_add_review");
+  goToReviewBtn.addEventListener("click", clickGoToReviewBtn);
   loadReview();
 };
 init();

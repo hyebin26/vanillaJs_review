@@ -250,7 +250,6 @@ module.exports = function (app) {
         console.log(err);
       }
       res.send(result);
-      console.log(result);
     });
   });
 

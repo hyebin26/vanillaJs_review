@@ -98,3 +98,7 @@ main {
 .profile_content_length {
   padding-bottom: 1rem;
 }
+.clean_h2 {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
