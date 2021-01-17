@@ -2,7 +2,6 @@ const loadReview = async () => {
   const contents = await fetch("http://localhost:3000/json") //
     .then((result) => result.json());
   contents.map((item) => showMainData(item));
-  console.log(contents);
 };
 
 const showMainData = (item) => {

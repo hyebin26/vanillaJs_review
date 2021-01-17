@@ -4,20 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Review</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
       integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Yusei+Magic&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="#">REVIEW</a>
+        <a href="/review">REVIEW</a>
       </div>
       <nav class="nav">
         <a href="/review/movie">영화</a>
@@ -27,8 +32,13 @@
       <div class="search">
         <a href="/review/profile" class="search_profile">내 정보</a>
         <a href="/review/login" class="search_loginBtn">로그인</a>
-        <form class="search_form"">
-          <input type="text" placeholder="리뷰 검색하기" class="search_input" />
+        <form class="search_form" action="/review/search">
+          <input
+            type="text"
+            placeholder="리뷰 검색하기"
+            class="search_input"
+            name="query"
+          />
           <button class="search_input_btn">
             <i class="fas fa-search"></i>
           </button>
@@ -45,7 +55,7 @@
     <footer>
       <h1>Footer</h1>
     </footer>
-    <script src="./javascript/user.js"></script>
-    <script src="./javascript/search.js"></script>
+    <script src="../javascript/user.js"></script>
+    <script src="../javascript/search.js"></script>
   </body>
 </html>
