@@ -13,7 +13,6 @@ const handleReviewEdit = async () => {
   const contentValue = document.querySelector(".edit_content").value;
   const editDataset = document.querySelector(".edit_form").dataset.edit_num;
   const editImage = document.querySelector(".image_span").dataset.image;
-  console.log(editImage);
 
   const opt = {
     method: "POST",

@@ -1,10 +1,12 @@
-const loadBookData = async () => {
-  const movieData = await fetch("/review/book/json") //
+const loadCategoryData = async () => {
+  const urlNum = location.href.indexOf("w") + 2;
+  const category = location.href.substring(urlNum);
+  const movieData = await fetch(`/review/${category}/json`) //
     .then((data) => data.json());
-  movieData.map((item) => showBookData(item));
+  movieData.map((item) => showCategoryData(item));
 };
 
-const showBookData = (item) => {
+const showCategoryData = (item) => {
   const container = document.querySelector(".contents_container");
   const itemList = document.createElement("li");
   const itemLink = document.createElement("a");
@@ -55,6 +57,6 @@ const showBookData = (item) => {
 };
 
 const bookInit = () => {
-  loadBookData();
+  loadCategoryData();
 };
 bookInit();
