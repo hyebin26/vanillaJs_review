@@ -1,2 +1,5 @@
 # Node moule
 node_modules/
+
+# Environment Varialbe 
+.env
