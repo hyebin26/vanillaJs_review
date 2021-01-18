@@ -55,7 +55,6 @@ const focusoutNickname = (e) => {
   const input = e.target;
   const getUser = JSON.parse(localStorage.getItem("user"));
   const userName = getUser == null ? [] : getUser.map((user) => user.nickname);
-  console.log(userName.map((map) => map) == input.value);
 
   if (input.value.length < 2) {
     input.nextElementSibling.innerHTML = "필수입력항목입니다.";

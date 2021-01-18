@@ -6,20 +6,23 @@ const clickLogin = async (e) => {
   const getUser = JSON.parse(localStorage.getItem("user")).map((user) => user);
   const user = getUser == null ? [] : getUser;
 
-  const uid = user.map((user) => user);
-
-  const checkUser = uid.map((user) => {
+  const checkUser = user.map((user) => {
     if (user.id == loginId && user.password == loginPassword) {
       return true;
     } else {
       return false;
     }
   });
-  if (checkUser.every((user) => user == false)) {
+
+  if (checkUser.every((statement) => statement == false)) {
     alert("아이디 혹은 비밀번호가 틀렸습니다.");
   } else {
     location.href = "/review";
-    sessionStorage.setItem("currentUser", loginId);
+    user.map((user) => {
+      if (user.id == loginId) {
+        sessionStorage.setItem("currentUser", user.nickname);
+      }
+    });
   }
 };
 

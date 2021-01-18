@@ -1,23 +1,3 @@
-// const imageUploader = async (file) => {
-//   const url = "https://api.cloudinary.com/v1_1/dcil8rawn/upload";
-//   const formData = new FormData();
-
-//   const textareaDiv = document.querySelector(".add_content");
-//   const img = document.createElement("img");
-
-//   formData.append("file", file);
-//   formData.append("upload_preset", "vnvxzryj");
-
-//   const imageFile = await fetch(url, {
-//     method: "POST",
-//     body: formData,
-//   }) //
-//     .then((res) => res.json());
-
-//   img.setAttribute("src", imageFile.url);
-//   img.setAttribute("art", imageFile.original_filename + " image");
-//   textareaDiv.appendChild(img);
-// };
 const imageLoader = async (file) => {
   const url = "https://api.cloudinary.com/v1_1/dcil8rawn/upload";
   const formData = new FormData();

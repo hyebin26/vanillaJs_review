@@ -27,6 +27,7 @@ main {
   flex: 1 1 60%;
   padding: 1.5rem 0;
   padding-right: 1rem;
+  width: 60%;
 }
 .update_user_container {
   flex: 1 1 40%;
@@ -86,6 +87,7 @@ main {
 }
 .update_description {
   font-size: 0.9rem;
+  overflow-wrap: break-word;
 }
 .update_content_sub_container {
   padding: 2rem 0;

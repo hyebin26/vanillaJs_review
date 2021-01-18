@@ -68,6 +68,7 @@ main {
 }
 .content_text_container {
   width: 90%;
+  padding-right: 5rem;
 }
 
 .content_user_container {
@@ -85,7 +86,10 @@ main {
 .content_description {
   color: rgb(86, 78, 78);
   font-size: 0.9em;
+  width: 100%;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .img_container img {
   width: 100%;

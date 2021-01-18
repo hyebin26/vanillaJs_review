@@ -24,7 +24,7 @@ module.exports = {
     search: ["./src/javascript/user.js", "./src/javascript/search.js"],
   },
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/src/dist",
     filename: "[name].js",
   },
 };
