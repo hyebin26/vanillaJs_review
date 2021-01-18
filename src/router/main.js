@@ -200,16 +200,18 @@ module.exports = function (app) {
     const sub_title = req.body;
     const category = req.body;
     const content = req.body;
+    const image = req.body;
     const editQuery =
-      "update reviewData set title=?,sub_title=?,category=?,content=? where id=?";
+      "update reviewData set title=?,sub_title=?,category=?,content=?,image=? where id=?";
     conn.query(
       editQuery,
-      [title, sub_title, category, content, editId],
+      [title, sub_title, category, content, image, editId],
       (err, result) => {
         if (err) {
           console.log(err);
           throw new Error();
         }
+        conn.query("select * from reviewData", (err, res) => console.log(res));
       }
     );
   });
