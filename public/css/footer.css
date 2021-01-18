@@ -1,9 +1,14 @@
 :root {
   --background: white;
-  --first_width: 75rem;
   --border: #c9c8c8;
   --input_width: 15rem;
   --a_hover: gold;
+  --first_width: 75rem;
+  --second_width: 55rem;
+  --third_width: 47rem;
+  --fourth_width: 40rem;
+  --fifth_width: 34rem;
+  --sixth_width: 28rem;
 }
 
 footer {
@@ -17,4 +22,30 @@ footer h1 {
   font-size: 3rem;
   flex: 100%;
   padding: 1rem 0;
+}
+
+@media screen and (max-width: 1025px) {
+  footer {
+    max-width: var(--second_width);
+  }
+}
+@media screen and (max-width: 900px) {
+  footer {
+    max-width: var(--third_width);
+  }
+}
+@media screen and (max-width: 767px) {
+  footer {
+    max-width: var(--fourth_width);
+  }
+}
+@media screen and (max-width: 599px) {
+  footer {
+    max-width: var(--fifth_width);
+  }
+}
+@media screen and (max-width: 399px) {
+  footer {
+    max-width: var(--sixth_width);
+  }
 }

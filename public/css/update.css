@@ -14,11 +14,14 @@
 
 main {
   width: 100%;
+  padding-left: 0.5rem;
+  margin: 0 auto;
 }
 .update_main {
   display: flex;
+}
+.width_container {
   max-width: var(--first_width);
-  margin: 0 auto;
 }
 .update_content_container {
   flex: 1 1 60%;
@@ -148,4 +151,30 @@ main {
 .comment_date {
   color: var(--border);
   font-size: 0.7rem;
+}
+
+@media screen and (max-width: 1025px) {
+  .width_container {
+    max-width: var(--second_width);
+  }
+}
+@media screen and (max-width: 900px) {
+  .width_container {
+    max-width: var(--third_width);
+  }
+}
+@media screen and (max-width: 767px) {
+  .width_container {
+    max-width: var(--fourth_width);
+  }
+}
+@media screen and (max-width: 599px) {
+  .width_container {
+    max-width: var(--fifth_width);
+  }
+}
+@media screen and (max-width: 399px) {
+  .width_container {
+    max-width: var(--sixth_width);
+  }
 }

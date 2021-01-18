@@ -20,26 +20,28 @@
   </head>
   <body>
     <header>
-      <div class="logo">
-        <a href="/review">REVIEW</a>
-      </div>
-      <nav class="nav">
-        <a href="/review/movie">영화</a>
-        <a href="/review/book">도서</a>
-        <a href="/review/album">앨범</a>
-      </nav>
-      <div class="search">
-        <a href="/review/profile" class="search_profile"></a>
-        <a href="/review/login" class="search_loginBtn">로그인</a>
-        <form class="search_form" action="/review/search">
-          <input type="text" placeholder="리뷰 검색하기" />
-          <button class="search_input_btn">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
+      <div class="header_container padding_container">
+        <div class="logo">
+          <a href="/review">REVIEW</a>
+        </div>
+        <nav class="nav">
+          <a href="/review/movie">영화</a>
+          <a href="/review/book">도서</a>
+          <a href="/review/album">앨범</a>
+        </nav>
+        <div class="search">
+          <a href="/review/profile" class="search_profile"></a>
+          <a href="/review/login" class="search_loginBtn">로그인</a>
+          <form class="search_form" action="/review/search">
+            <input type="text" placeholder="리뷰 검색하기" />
+            <button class="search_input_btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </header>
-    <main>
+    <main class="width_container">
       <div class="movie_content_section">
         <div class="write">
           <a href="/review/new">리뷰작성하기</a>

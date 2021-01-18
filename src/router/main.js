@@ -211,7 +211,6 @@ module.exports = function (app) {
           console.log(err);
           throw new Error();
         }
-        conn.query("select * from reviewData", (err, res) => console.log(res));
       }
     );
   });

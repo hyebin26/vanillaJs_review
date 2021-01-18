@@ -6,6 +6,11 @@
   --text_description: rgb(68, 67, 67);
   --a_hover: gold;
   --font_sub: #757575;
+  --second_width: 55rem;
+  --third_width: 47rem;
+  --fourth_width: 40rem;
+  --fifth_width: 34rem;
+  --sixth_width: 28rem;
 }
 
 body {
@@ -28,8 +33,6 @@ a {
 }
 
 .write {
-  width: var(--first_width);
-  margin: 0 auto;
   padding: 0.5rem 0;
   display: flex;
 }
@@ -41,8 +44,7 @@ main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
-  max-width: var(--first_width);
+  padding-left: 0.5rem;
 }
 
 .contents_container {
@@ -101,4 +103,38 @@ main {
 .clean_h2 {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
+}
+.width_container {
+  max-width: var(--first_width);
+}
+@media screen and (max-width: 1025px) {
+  .width_container {
+    max-width: var(--second_width);
+  }
+  .img_container {
+    width: 20%;
+  }
+  .content_text_container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .width_container {
+    max-width: var(--third_width);
+  }
+}
+@media screen and (max-width: 767px) {
+  .width_container {
+    max-width: var(--fourth_width);
+  }
+}
+@media screen and (max-width: 599px) {
+  .width_container {
+    max-width: var(--fifth_width);
+  }
+}
+@media screen and (max-width: 399px) {
+  .width_container {
+    max-width: var(--sixth_width);
+  }
 }
