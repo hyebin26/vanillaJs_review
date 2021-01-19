@@ -2,11 +2,14 @@
   "name": "js_review",
   "version": "1.0.0",
   "description": "",
-  "main": "mysql.js",
+  "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,12 +20,14 @@
   "bugs": {
     "url": "https://github.com/hyebin-Hwang/js_review/issues"
   },
-  "homepage": "https://github.com/hyebin-Hwang/js_review#readme",
+  "homepage": "https://github.com/hyebin-Hwang/views/index.html",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "firebase": "^8.2.1",
+    "gh-pages": "^3.1.0",
+    "heroku": "^7.47.7",
     "html-loader": "^1.3.2",
     "mysql": "^2.18.1",
     "path": "^0.12.7"

@@ -14,7 +14,3 @@ app.use(express.static(__dirname + "../../"));
 app.set("views", "../../views");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
-
-const server = app.listen(3000, function () {
-  console.log("Express server has started on port 3000");
-});
