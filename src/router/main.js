@@ -6,8 +6,8 @@ module.exports = function (app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.json({ limit: "1mb" }));
 
-  app.get("/json", (req, res) => {
-    conn.query("select * from reviewData", (err, results) => {
+  app.get("/review/json", (req, res) => {
+    conn.query("select * from reviewData order by id desc", (err, results) => {
       res.json(results);
     });
   });
@@ -244,7 +244,6 @@ module.exports = function (app) {
   // });
   app.post("/review/search/json", (req, res) => {
     const search = req.body.query;
-    console.log(search);
     const searchQquery = `select * from reviewData where concat(title,content,sub_title) like '%${search}%'`;
     conn.query(searchQquery, (err, result) => {
       if (err) {

@@ -111,6 +111,28 @@ main {
 .width_container {
   max-width: var(--first_width);
 }
+.pagigator {
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+}
+.pagigator_container {
+  display: flex;
+  justify-content: center;
+}
+.pagigator_container a {
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.pagigator_container a:hover {
+  background-color: var(--a_hover);
+}
+.pagigator_list {
+  
+}
+.active {
+  background-color: var(--a_hover);
+}
+
 @media screen and (max-width: 1025px) {
   .width_container {
     max-width: var(--second_width);

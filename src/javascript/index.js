@@ -1,7 +1,59 @@
+const paginationButton = (page, items, current_page) => {
+  let link = document.createElement("a");
+  let list = document.createElement("li");
+
+  list.classList.add("pagigator_list");
+  link.classList.add("pagigator_link");
+
+  link.dataset.page_num = page;
+  link.setAttribute("href", "/review?page=" + page);
+  list.appendChild(link);
+  link.innerText = page;
+
+  if (current_page == page) link.classList.add("active");
+
+  link.addEventListener("click", () => {
+    current_page = page;
+
+    let current_btn = document.querySelector(".pagigator_link active");
+    current_btn.classList.remove("active");
+
+    link.classList.add("active");
+  });
+  return list;
+};
+
+const displayList = (items, rows_per_page, page) => {
+  page--;
+
+  let start = page * rows_per_page;
+  let end = start + rows_per_page;
+  let paginatedItems = items.slice(start, end);
+
+  paginatedItems.map((item) => showMainData(item));
+};
+
+const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
+  let page_count = Math.ceil(items.length / rows_per_page);
+  for (let i = 1; i < page_count + 1; i++) {
+    let btn = paginationButton(i, items, currentPage);
+    wrapper.appendChild(btn);
+  }
+};
+
 const loadReview = async () => {
-  const contents = await fetch("http://localhost:3000/json") //
+  const contents = await fetch("http://localhost:3000/review/json") //
     .then((result) => result.json());
-  contents.map((item) => showMainData(item));
+  const paginationWrapper = document.querySelector(".pagigator_container");
+
+  const url = new URL(location.href);
+  const currentUrl = new URLSearchParams(url.search);
+
+  let currentPage = currentUrl.get("page") == null ? 1 : currentUrl.get("page");
+  const rows = 5;
+
+  displayList(contents, rows, currentPage);
+  setupPagination(contents, rows, paginationWrapper, currentPage);
 };
 
 const showMainData = (item) => {
