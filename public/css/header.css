@@ -48,10 +48,11 @@ header a:hover {
   flex: 1 1 30%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .search {
-  flex: 1 1 50%;
+  flex: 1 1 40%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -127,7 +128,10 @@ header a:hover {
     width: var(--intput_second_width);
   }
   .nav {
-    display: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  .nav a {
   }
   * {
     font-size: 0.9rem;
@@ -143,21 +147,22 @@ header a:hover {
   }
 
   .nav {
-    display: none;
+    display: block;
   }
   .search input {
     width: var(--intput_second_width);
   }
-
+  * {
+    font-size: 0.7rem;
+  }
   .logo {
     flex: 0;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 380px) {
   header {
     max-width: var(--sixth_width);
   }
-
   .nav {
     display: none;
   }
@@ -167,8 +172,5 @@ header a:hover {
 
   .logo {
     flex: 0;
-  }
-  * {
-    font-size: 0.7rem;
   }
 }

@@ -23,6 +23,7 @@ input {
   outline: none;
 }
 
+
 .sign {
   width: var(--sign-width);
   margin: 0 auto;

@@ -42,7 +42,7 @@ const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
 };
 
 const loadReview = async () => {
-  const contents = await fetch("http://localhost:3000/review/json") //
+  const contents = await fetch("/review/json") //
     .then((result) => result.json());
   const paginationWrapper = document.querySelector(".pagigator_container");
 
