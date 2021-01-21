@@ -18,6 +18,6 @@ app.get("/", (req, res) => {
 });
 
 console.log();
-const server = app.listen(process.env.DB_PORT || 3000, function () {
+const server = app.listen(process.env.PORT || 3000, function () {
   console.log("Express server has started on port 3000");
 });
