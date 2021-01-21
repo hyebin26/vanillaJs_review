@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const conn = require("./src/server/mysql");
+const conn = require("./mysql.js");
 // const router = require("./src/router/main")(app);
 
 // app.use(express.static(__dirname + "../../../public"));
@@ -16,8 +16,11 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 app.get("/", (req, res) => {
-  res.send("SUces");
+  conn.query("select * from review", (err, result) => {
+    console.log(result);
+    res.send(result);
+  });
 });
-const server = app.listen(3306 || 3000, function () {
+const server = app.listen(3306, function () {
   console.log("Express server has started on port 3000");
 });
