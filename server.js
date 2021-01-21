@@ -13,7 +13,7 @@ app.use(express.static(__dirname + "/src"));
 app.get("/", (req, res) => {
   conn.query("select * from reviewData", (err, result) => {
     console.log(result);
-    res.send(result);
+    res.send("hello");
   });
 });
 
