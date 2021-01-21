@@ -21,8 +21,6 @@ app.get("/", (req, res) => {
     res.send(result);
   });
 });
-// const server = app.listen(3306 || 3000, function () {
-//   console.log("Express server has started on port 3000");
-// });
-var port_number = server.listen(3306 || 3000);
-app.listen(port_number);
+const server = app.listen(process.env.PORT || 3000, function () {
+  console.log("Express server has started on port 3000");
+});
