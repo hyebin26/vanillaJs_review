@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const conn = require("./mysql.js");
+// const conn = require("./mysql.js");
 //const router = require("./src/router/main")(app);
 
 app.use(express.static(__dirname + "/public"));
@@ -11,13 +11,10 @@ app.use(express.static(__dirname + "/src"));
 // app.engine("html", require("ejs").renderFile);
 
 app.get("/", (req, res) => {
-  conn.query("select * from reviewData", (err, result) => {
-    res.send("hello");
-    console.log(result);
-  });
+  res.send("Hello");
 });
 
-var port = process.env.PORT || 3000;
+var port = 3306 || 3000;
 
 app.listen(port, (req, res) => {
   console.log("sever running on port");
