@@ -1,4 +1,4 @@
-const conn = require("../server/mysql");
+const conn = require("../../mysql");
 const bodyParser = require("body-parser");
 const express = require("express");
 
@@ -6,15 +6,12 @@ module.exports = function (app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.json({ limit: "1mb" }));
 
-  app.get("/", (req, res) => {
-    res.send("Sucess !!!!");
-  });
   app.get("/review/json", (req, res) => {
     conn.query("select * from reviewData order by id desc", (err, results) => {
       res.json(results);
     });
   });
-  app.get("/review", function (req, res) {
+  app.get("/", function (req, res) {
     res.render(__dirname + "../../../views/index.html");
   });
   app.get("/review/login", (req, res) => {

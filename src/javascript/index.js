@@ -43,6 +43,7 @@ const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
 
 const loadReview = async () => {
   const contents = await fetch("/review/json") //
+    .then((res) => console.log(res))
     .then((result) => result.json());
   const paginationWrapper = document.querySelector(".pagigator_container");
 
