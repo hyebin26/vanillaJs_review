@@ -18,7 +18,7 @@ app.engine("html", require("ejs").renderFile);
 app.get("/", (req, res) => {
   conn.query("select * from review", (err, result) => {
     console.log(result);
-    res.send(result);
+    res.send(result + "hello");
   });
 });
 const server = app.listen(process.env.PORT || 3000, function () {
