@@ -21,6 +21,6 @@ app.get("/", (req, res) => {
     res.send(result);
   });
 });
-const server = app.listen(3306, function () {
+const server = app.listen(3306 || 3000, function () {
   console.log("Express server has started on port 3000");
 });
