@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node main.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "predeploy": "npm run build",
@@ -18,7 +18,6 @@
   "bugs": {
     "url": "https://github.com/hyebin-Hwang/js_review/issues"
   },
-  "homepage": "https://github.com/hyebin-Hwang/views/index.html",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",

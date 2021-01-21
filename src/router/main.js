@@ -6,6 +6,9 @@ module.exports = function (app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.json({ limit: "1mb" }));
 
+  app.get("/", (req, res) => {
+    res.send("Sucess !!!!");
+  });
   app.get("/review/json", (req, res) => {
     conn.query("select * from reviewData order by id desc", (err, results) => {
       res.json(results);
