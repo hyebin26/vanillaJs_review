@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node ./src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
     "watch": "webpack --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -30,7 +29,8 @@
     "heroku": "^7.47.7",
     "html-loader": "^1.3.2",
     "mysql": "^2.18.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
