@@ -11,10 +11,13 @@ app.use(express.static(__dirname + "/src"));
 // app.engine("html", require("ejs").renderFile);
 
 app.get("/", (req, res) => {
-  res.send("hello");
+  conn.query("select * from reviewData", (err, result) => {
+    res.send("hello");
+    console.log(result);
+  });
 });
 
-const port = 3306 || 3000;
+var port = process.env.PORT || 3000;
 
 app.listen(port, (req, res) => {
   console.log("sever running on port");
