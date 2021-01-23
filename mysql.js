@@ -1,12 +1,11 @@
-const path = require("path");
 require("dotenv").config();
 const mysql = require("mysql");
 
 const conn = mysql.createConnection({
-  host: "us-cdbr-east-03.cleardb.com",
-  user: "be2ff3ee163c4b",
-  password: "9fc623be",
-  database: "heroku_244241f777f7f13",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DB,
 });
 
 module.exports = conn;

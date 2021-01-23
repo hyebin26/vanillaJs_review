@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
- const conn = require("/mysql.js");
+const conn = require("/mysql.js");
 //const router = require("./src/router/main")(app);
 
 app.use(express.static(__dirname + "/public"));
