@@ -232,16 +232,7 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/review/search", (req, res) => {
-  //   const search = req.query.query;
-  //   const searchQquery = `select * from reviewData where concat(title,content,sub_title) like '%${search}%'`;
-  //   conn.query(searchQquery, (err, result) => {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     res.render(__dirname + "../../../views/search.html");
-  //   });
-  // });
+
   app.post("/review/search/json", (req, res) => {
     const search = req.body.query;
     const searchQquery = `select * from reviewData where concat(title,content,sub_title) like '%${search}%'`;
