@@ -1,18 +1,37 @@
+const local = "http://localhost:3500/review";
+
+const doubleCheck = async (_inputValue, _info) => {
+  const url = `${local}/user/${_info}`;
+  const user = {};
+  user[_info] = _inputValue;
+  return await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ user }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
 const focusoutId = (e) => {
   const input = e.target;
-  const getUser = JSON.parse(localStorage.getItem("user"));
-  const uid = getUser == null ? [] : getUser.map((user) => user.id);
-
+  doubleCheck(input.value, "id").then((res) => {
+    if (res === true) {
+      input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
+      input.classList.add("js_red");
+    }
+  });
   if (input.value === "") {
     input.nextElementSibling.innerHTML = "필수입력항목입니다.";
     input.classList.add("js_red");
-  } else if (input.value >= 6) {
+  } //
+  else if (input.value >= 6) {
     input.nextElementSibling.innerHTML = "아이디는 6글자 이상이어야 합니다.";
     input.classList.add("js_red");
-  } else if (uid.map((userId) => userId) == input.value) {
-    input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
-    input.classList.add("js_red");
-  } else {
+  } //
+  else {
     input.nextElementSibling.innerHTML = "";
     input.classList.remove("js_red");
   }
@@ -53,26 +72,39 @@ const focusoutSecondPassword = (e) => {
 
 const focusoutNickname = (e) => {
   const input = e.target;
-  const getUser = JSON.parse(localStorage.getItem("user"));
-  const userName = getUser == null ? [] : getUser.map((user) => user.nickname);
-
+  doubleCheck(input.value, "nickname").then((res) => {
+    if (res === true) {
+      input.nextElementSibling.innerHTML = "이미 존재합니다.";
+      input.classList.add("js_red");
+    }
+  });
   if (input.value.length < 2) {
     input.nextElementSibling.innerHTML = "필수입력항목입니다.";
     input.classList.add("js_red");
-  } else if (input.value.length >= 15) {
+  } //
+  else if (input.value.length >= 15) {
     input.nextElementSibling.innerHTML = "초과되었습니다.";
     input.classList.add("js_red");
-  } else if (userName.map((user) => user) == input.value) {
-    input.nextElementSibling.innerHTML = "이미 존재합니다.";
-    input.classList.add("js_red");
-  } else {
+  } //
+  else {
     input.nextElementSibling.innerHTML = "";
     input.classList.remove("js_red");
   }
 };
 
-const insertUser = async () => {
-  await fetch("http://localhost:3500/review/signUp");
+const insertUser = async (_id, _passowrd, _nickname) => {
+  const url = `${local}/user`;
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({
+      id: _id,
+      password: _passowrd,
+      nickname: _nickname,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
 
 const clickSubmit = (e) => {
@@ -83,28 +115,23 @@ const clickSubmit = (e) => {
   const passwordValue = document.querySelector(".input_password").value;
   const password2Value = document.querySelector(".input_password2").value;
   const nicknameValue = document.querySelector(".input_nickname").value;
-  const getUser = JSON.parse(localStorage.getItem("user"));
-  const user = getUser == null ? [] : getUser;
 
   const arrInputEvery = allInputArr.every(
     (item) => !item.classList.contains("js_red")
   );
+  console.log(arrInputEvery);
   if (
-    arrInputEvery &&
-    !idValue == "" &&
-    !nicknameValue == "" &&
-    !password2Value == "" &&
-    !passwordValue == ""
+    !arrInputEvery ||
+    idValue === "" ||
+    nicknameValue === "" ||
+    password2Value === "" ||
+    passwordValue === ""
   ) {
-    alert("회원가입성공!");
-    user.push({
-      id: idValue,
-      password: passwordValue,
-      nickname: nicknameValue,
-    });
-    location.href = "/review/login";
-  } else {
     alert("다시해주세요!");
+  } else {
+    alert("회원가입성공!");
+    insertUser(idValue, passwordValue, nicknameValue);
+    location.href = "/review/login";
   }
 };
 
