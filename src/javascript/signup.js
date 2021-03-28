@@ -50,7 +50,6 @@ const focusoutFirstPassword = (e) => {
     input.classList.remove("js_red");
     input.nextElementSibling.innerHTML = "";
   }
-  ///
 };
 
 const focusoutSecondPassword = (e) => {
@@ -121,17 +120,17 @@ const clickSubmit = (e) => {
   );
   console.log(arrInputEvery);
   if (
-    !arrInputEvery ||
-    idValue === "" ||
-    nicknameValue === "" ||
-    password2Value === "" ||
-    passwordValue === ""
+    arrInputEvery &&
+    idValue !== "" &&
+    nicknameValue !== "" &&
+    password2Value !== "" &&
+    passwordValue !== ""
   ) {
-    alert("다시해주세요!");
-  } else {
     alert("회원가입성공!");
-    insertUser(idValue, passwordValue, nicknameValue);
     location.href = "/review/login";
+    insertUser(idValue, passwordValue, nicknameValue);
+  } else {
+    alert("다시해주세요!");
   }
 };
 
