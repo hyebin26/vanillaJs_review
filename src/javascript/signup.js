@@ -71,6 +71,10 @@ const focusoutNickname = (e) => {
   }
 };
 
+const insertUser = async () => {
+  await fetch("http://localhost:3500/review/signUp");
+};
+
 const clickSubmit = (e) => {
   e.preventDefault();
   const allInput = document.getElementsByTagName("input");
@@ -98,7 +102,6 @@ const clickSubmit = (e) => {
       password: passwordValue,
       nickname: nicknameValue,
     });
-    localStorage.setItem("user", JSON.stringify(user));
     location.href = "/review/login";
   } else {
     alert("다시해주세요!");

@@ -1,3 +1,5 @@
+const localhost = "http://localhost:3500";
+
 const paginationButton = (page, items, current_page) => {
   let link = document.createElement("a");
   let list = document.createElement("li");
@@ -42,9 +44,9 @@ const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
 };
 
 const loadReview = async () => {
-  const contents = await fetch("/review/json") //
-    .then((res) => console.log(res))
-    .then((result) => result.json());
+  const contents = await fetch(`${localhost}/review/json`) //
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
   const paginationWrapper = document.querySelector(".pagigator_container");
 
   const url = new URL(location.href);
