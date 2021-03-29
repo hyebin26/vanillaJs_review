@@ -21,7 +21,7 @@ const clickAddReviewBtn = async (e) => {
     },
   };
   location.replace("/review");
-  await fetch("/review/new", opt);
+  await fetch("http://localhost:3500/review/new", opt);
 };
 
 const addReviewInit = () => {

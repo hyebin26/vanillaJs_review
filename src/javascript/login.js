@@ -19,7 +19,7 @@ const clickLogin = (e) => {
 
   fetchLogin(loginId, loginPassword).then((res) => {
     if (res) {
-      localStorage.setItem("currentUser", res);
+      sessionStorage.setItem("currentUser", res);
       location.href = "/review";
     } else {
       alert("아이디 혹은 비밀번호가 틀렸습니다.!");
@@ -32,3 +32,4 @@ const LoginInit = () => {
   loginBtn.addEventListener("click", clickLogin);
 };
 LoginInit();
+e;
