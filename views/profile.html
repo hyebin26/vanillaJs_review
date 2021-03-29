@@ -34,7 +34,12 @@
           <a href="/review/profile" class="search_profile">내 정보</a>
           <a href="/review/login" class="search_loginBtn">로그인</a>
           <form class="search_form" action="/review/search">
-            <input type="text" placeholder="리뷰 검색하기" />
+            <input
+              type="text"
+              placeholder="리뷰 검색하기"
+              name="query"
+              class="search_input"
+            />
             <button class="search_input_btn">
               <i class="fas fa-search"></i>
             </button>
@@ -46,12 +51,14 @@
       <div class="profile_content_section">
         <div class="profile_content_length"></div>
         <ul class="contents_container"></ul>
+        <nav class="pagigator">
+          <ul class="pagigator_container"></ul>
+        </nav>
       </div>
     </main>
     <footer>
       <h1>Footer</h1>
     </footer>
-    <script src="../src/javascript/user.js"></script>
-    <script src="../src/javascript/profile.js"></script>
+    <script src="../src/dist/profile.js"></script>
   </body>
 </html>

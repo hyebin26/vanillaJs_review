@@ -1,5 +1,46 @@
 const localSearch = "http://localhost:3500";
 
+const displayList = (items, rows_per_page, page) => {
+  page--;
+
+  let start = page * rows_per_page;
+  let end = start + rows_per_page;
+  let paginatedItems = items.slice(start, end);
+  paginatedItems.map((item) => showSearchData(item));
+};
+
+const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
+  let page_count = Math.ceil(items.length / rows_per_page);
+  for (let i = 1; i < page_count + 1; i++) {
+    let btn = paginationButton(i, currentPage);
+    wrapper.appendChild(btn);
+  }
+};
+
+const paginationButton = (page, current_page) => {
+  let link = document.createElement("a");
+  let list = document.createElement("li");
+
+  list.classList.add("pagigator_list");
+  link.classList.add("pagigator_link");
+
+  link.dataset.page_num = page;
+  link.setAttribute("href", "/review?page=" + page);
+  list.appendChild(link);
+  link.innerText = page;
+  if (parseInt(current_page) === page) link.classList.add("active");
+
+  link.addEventListener("click", () => {
+    current_page = page;
+
+    let current_btn = document.querySelector(".pagigator_link active");
+    current_btn.classList.remove("active");
+
+    link.classList.add("active");
+  });
+  return list;
+};
+
 const loadSearchData = async (e) => {
   const currentURL = new URL(location.href);
   const url = new URLSearchParams(currentURL.search);
@@ -12,17 +53,24 @@ const loadSearchData = async (e) => {
     },
   };
   const fetchSearch = await fetch(`${localSearch}/review/search`, opt) //
-    .then((res) => res.json());
-  if (fetchSearch === false) {
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+  const paginationWrapper = document.querySelector(".pagigator_container");
+
+  if (fetchSearch.length === 0 ) {
     const container = document.querySelector(".contents_container");
     const cleanData = document.createElement("h2");
     cleanData.classList.add("clean_h2");
     cleanData.innerText = "정보가 없습니다 !";
     container.appendChild(cleanData);
+  } //
+  else {
+    let currentPage = url.get("page") === null ? 1 : url.get("page");
+    const rows = 5;
+
+    displayList(fetchSearch, rows, currentPage);
+    setupPagination(fetchSearch, rows, paginationWrapper, currentPage);
   }
-  fetchSearch.map((data) => {
-    return showSearchData(data);
-  });
 };
 
 const showSearchData = (item) => {

@@ -1,9 +1,49 @@
 const localPro = "http://localhost:3500";
 
+const displayList = (items, rows_per_page, page) => {
+  page--;
+
+  let start = page * rows_per_page;
+  let end = start + rows_per_page;
+  let paginatedItems = items.slice(start, end);
+  paginatedItems.map((item) => showProfileData(item));
+};
+
+const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
+  let page_count = Math.ceil(items.length / rows_per_page);
+  for (let i = 1; i < page_count + 1; i++) {
+    let btn = paginationButton(i, currentPage);
+    wrapper.appendChild(btn);
+  }
+};
+
+const paginationButton = (page, current_page) => {
+  let link = document.createElement("a");
+  let list = document.createElement("li");
+
+  list.classList.add("pagigator_list");
+  link.classList.add("pagigator_link");
+
+  link.dataset.page_num = page;
+  link.setAttribute("href", "/review?page=" + page);
+  list.appendChild(link);
+  link.innerText = page;
+  if (parseInt(current_page) === page) link.classList.add("active");
+
+  link.addEventListener("click", () => {
+    current_page = page;
+
+    let current_btn = document.querySelector(".pagigator_link active");
+    current_btn.classList.remove("active");
+
+    link.classList.add("active");
+  });
+  return list;
+};
 const loadProfileData = async () => {
   const currentUser = sessionStorage.getItem("currentUser");
 
-  if (currentUser == null) {
+  if (currentUser === null) {
     return false;
   } else {
     const opt = {
@@ -20,7 +60,15 @@ const loadProfileData = async () => {
     const contentLength = document.querySelector(".profile_content_length");
     contentLength.innerText = "나의 글 " + profileDatas.length;
 
-    profileDatas.map((review) => showProfileData(review));
+    const paginationWrapper = document.querySelector(".pagigator_container");
+    const url = new URL(location.href);
+    const currentUrl = new URLSearchParams(url.search);
+    let currentPage =
+      currentUrl.get("page") === null ? 1 : currentUrl.get("page");
+    const rows = 5;
+
+    displayList(profileDatas, rows, currentPage);
+    setupPagination(profileDatas, rows, paginationWrapper, currentPage);
   }
 };
 
