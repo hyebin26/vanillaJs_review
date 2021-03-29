@@ -1,3 +1,5 @@
+const localSearch = "http://localhost:3500";
+
 const loadSearchData = async (e) => {
   const currentURL = new URL(location.href);
   const url = new URLSearchParams(currentURL.search);
@@ -9,23 +11,21 @@ const loadSearchData = async (e) => {
       "Content-Type": "application/json",
     },
   };
-  const fetchSearch = await fetch("/review/search/json", opt) //
+  const fetchSearch = await fetch(`${localSearch}/review/search`, opt) //
     .then((res) => res.json());
-  if (fetchSearch == false) {
+  if (fetchSearch === false) {
     const container = document.querySelector(".contents_container");
     const cleanData = document.createElement("h2");
-    cleanData.classList.add("clean_h2")
+    cleanData.classList.add("clean_h2");
     cleanData.innerText = "정보가 없습니다 !";
     container.appendChild(cleanData);
   }
   fetchSearch.map((data) => {
-    console.log(data);
     return showSearchData(data);
   });
 };
 
 const showSearchData = (item) => {
-  console.log(item);
   if (item == false) {
     const cleanData = document.createElement("h2");
     container.appendChild(cleanData);

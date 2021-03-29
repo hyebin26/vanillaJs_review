@@ -1,3 +1,5 @@
+const localPro = "http://localhost:3500";
+
 const loadProfileData = async () => {
   const currentUser = sessionStorage.getItem("currentUser");
 
@@ -13,7 +15,7 @@ const loadProfileData = async () => {
         "Content-Type": "application/json",
       },
     };
-    const profileDatas = await fetch("/review/profile/json", opt) //
+    const profileDatas = await fetch(`${localPro}/review/profile`, opt) //
       .then((response) => response.json());
     const contentLength = document.querySelector(".profile_content_length");
     contentLength.innerText = "나의 글 " + profileDatas.length;
@@ -70,6 +72,10 @@ const showProfileData = (item) => {
 
   itemLink.setAttribute("href", `/review/update/${item.id}`);
   container.appendChild(itemList);
+
+  if (item.image) {
+    itemImg.setAttribute("src", item.image);
+  }
 };
 
 const profileInit = () => {

@@ -1,7 +1,9 @@
+const localCate = "http://localhost:3500";
+
 const loadCategoryData = async () => {
   const urlNum = location.href.indexOf("w") + 2;
   const category = location.href.substring(urlNum);
-  const movieData = await fetch(`/review/${category}/json`) //
+  const movieData = await fetch(`${localCate}/review/category/${category}`) //
     .then((data) => data.json());
   movieData.map((item) => showCategoryData(item));
 };
@@ -54,6 +56,10 @@ const showCategoryData = (item) => {
 
   itemLink.setAttribute("href", `/review/update/${item.id}`);
   container.appendChild(itemList);
+
+  if (item.image) {
+    itemImg.setAttribute("src", item.image);
+  }
 };
 
 const bookInit = () => {

@@ -101,9 +101,6 @@ main {
   padding: 0 0.2rem;
 }
 
-.profile_content_length {
-  padding-bottom: 1rem;
-}
 .clean_h2 {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
@@ -127,7 +124,6 @@ main {
   background-color: var(--a_hover);
 }
 .pagigator_list {
-  
 }
 .active {
   background-color: var(--a_hover);
