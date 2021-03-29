@@ -1,10 +1,14 @@
+const local = "http://localhost:3500";
+
 const loadUpdate = async () => {
-  const data = await fetch(location.href + "/json") //
+  const id = location.href.split("update/")[1];
+  const data = await fetch(`${local}/review/updateData/${id}`) //
     .then((result) => result.json());
   showUpdateData(data[0]);
 };
 
 const clickUpdateDelete = async (e) => {
+  const id = location.href.split("update/")[1];
   const currentUser = sessionStorage.getItem("currentUser");
   const userValue = document.querySelector(".user_name").innerText;
   if (currentUser == userValue) {
@@ -20,7 +24,7 @@ const clickUpdateDelete = async (e) => {
     };
     if (confirm("삭제하시겠습니까?")) {
       location.href = "/review";
-      await fetch(location.href + "/json/delete", opt);
+      await fetch(`${local}/review/updateData/${id}/delete`, opt);
     } else {
       return false;
     }
@@ -33,6 +37,7 @@ const clickUpdateDelete = async (e) => {
 
 const clickUpdateEdit = async (e) => {
   e.preventDefault();
+  const id = location.href.split("update/")[1];
   const currentUser = sessionStorage.getItem("currentUser");
   const userValue = document.querySelector(".user_name").innerText;
   if (currentUser == userValue) {
@@ -48,10 +53,9 @@ const clickUpdateEdit = async (e) => {
       },
     };
     location.href = location.href + "/edit";
-    await fetch(location.href + "/json/edit", opt);
+    await fetch(`${local}/review/updateData/${id}/edit`, opt);
   } else {
     e.preventDefault();
-
     alert("권한이 없습니다.");
     return false;
   }

@@ -1,3 +1,5 @@
+const localComment = "http://localhost:3500";
+
 const loadDate = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -13,6 +15,7 @@ const loadDate = () => {
 
 const clickCommentEdit = async (e) => {
   const editContent = e.target.parentNode.previousSibling;
+  const id = location.href.split("update/")[1];
   const editList = editContent.parentNode;
   const editSpan = document.createElement("span");
   const editDate = e.target.parentNode.nextElementSibling;
@@ -23,7 +26,7 @@ const clickCommentEdit = async (e) => {
   editList.replaceChild(editSpan, editContent);
   e.target.parentNode.removeChild(e.target);
 
-  await fetch(location.href + "/json/comment/edit", {
+  await fetch(`${localComment}/review/updateData/${id}/comment/edit`, {
     method: "POST",
     body: JSON.stringify({
       editDataset: editList.dataset.commentNum,
@@ -37,10 +40,11 @@ const clickCommentEdit = async (e) => {
 };
 const handleCommentDelete = async (e) => {
   e.preventDefault();
+  const id = location.href.split("update/")[1];
   const list = e.target.parentNode.parentNode;
   const listContainer = list.parentNode;
   listContainer.removeChild(list);
-  await fetch(location.href + "/json/comment/delete", {
+  await fetch(`${localComment}/review/updateData/${id}/comment/delete`, {
     method: "POST",
     body: JSON.stringify({
       list_num: list.dataset,
@@ -114,6 +118,8 @@ const showComment = (comment) => {
 
 const clickCommentAddBtn = async (event) => {
   event.preventDefault();
+
+  const id = location.href.split("update/")[1];
   const currentUser = sessionStorage.getItem("currentUser");
   const updateCommentInput = document.querySelector(".update_comment_input");
   if (updateCommentInput.value === "") {
@@ -132,7 +138,7 @@ const clickCommentAddBtn = async (event) => {
         "Content-Type": "application/json",
       },
     };
-    await fetch(location.href + "/json/comment", option); //
+    await fetch(`${localComment}/review/updateData/${id}/comment`, option); //
     showComment(addComment);
   }
 };
@@ -140,8 +146,9 @@ const clickCommentAddBtn = async (event) => {
 const fetchComment = async () => {
   let commentData = {};
   const updateAddFormBtn = document.querySelector(".comment_add_btn");
+  const id = location.href.split("update/")[1];
 
-  await fetch(location.href + "/json/comment") //
+  await fetch(`${localComment}/review/updateData/${id}/comment`) //
     .then((res) => res.json()) //
     .then((data) => (commentData = data))
     .catch((err) => new Error(err));

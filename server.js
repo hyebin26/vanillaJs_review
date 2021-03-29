@@ -3,21 +3,23 @@ const app = express();
 
 app.use(express.static(__dirname));
 
+// app.get("/review/update/:id", (req, res) => {
+//   let id = req.params.id;
+//   if (id) {
+//     const updateSql = "select * from reviewData where id=?";
+//     conn.query(updateSql, [id], (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         res.json(result);
+//       }
+//     });
+//   } else {
+//     res.send("There is no id!");
+//   }
+// });
 app.get("/review/update/:id", (req, res) => {
-  let id = req.params.id;
-  if (id) {
-    const updateSql = "select * from reviewData where id=?";
-    conn.query(updateSql, [id], (err, result) => {
-      if (err) {
-        console.log(err);
-        throw new Error();
-      } else {
-        res.json(result);
-      }
-    });
-  } else {
-    res.send("There is no id!");
-  }
+  res.sendFile(__dirname + "/views/update.html");
 });
 app.get("/review", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
