@@ -15,7 +15,7 @@ app.get("/login", (req, res) => {
 app.get("/review/new", function (req, res) {
   res.sendFile(__dirname + "/views/addReviewForm.html");
 });
-app.get("/review/signUp", (req, res) => {
+app.get("/signUp", (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
 app.get("/review/profile", (req, res) => {
