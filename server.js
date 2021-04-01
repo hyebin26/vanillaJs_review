@@ -9,7 +9,7 @@ app.get("/review/update/:id", (req, res) => {
 app.get("/review", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
-app.get("/review/login", (req, res) => {
+app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/views/login.html");
 });
 app.get("/review/new", function (req, res) {
