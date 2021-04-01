@@ -36,8 +36,3 @@ app.get("/review/book", (req, res) => {
 app.get("/review/album", (req, res) => {
   res.sendFile(__dirname + "/views/album.html");
 });
-
-app.listen(8000, (req, res) => {
-  console.log("sever running on port");
-  console.log(__dirname);
-});
