@@ -9,16 +9,16 @@ app.get("/update/:id", (req, res) => {
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
-app.get("/login", (req, res) => {
+app.get("vanillaJs_review/login", (req, res) => {
   res.sendFile(__dirname + "/views/login.html");
 });
 app.get("/new", function (req, res) {
   res.sendFile(__dirname + "/views/addReviewForm.html");
 });
-app.get("/signUp", (req, res) => {
+app.get("/vanillaJs_review/signup", (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
-app.get("/profile", (req, res) => {
+app.get("https://hyebin26.github.io/vanillaJs_review/profile", (req, res) => {
   res.sendFile(__dirname + "/views/profile.html");
 });
 app.get("/search", (req, res) => {
