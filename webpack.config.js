@@ -18,7 +18,7 @@ module.exports = {
     profile: ["./src/javascript/user.js", "./src/javascript/profile.js"],
     update: [
       "./src/javascript/user.js",
-      "./src/javascript/update.js",
+    "./src/javascript/update.js",
       "./src/javascript/comment.js",
     ],
     search: ["./src/javascript/user.js", "./src/javascript/search.js"],

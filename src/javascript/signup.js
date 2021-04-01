@@ -126,7 +126,7 @@ const clickSubmit = (e) => {
   ) {
     insertUser(idValue, passwordValue, nicknameValue);
     alert("회원가입성공!");
-    location.href = "/review/login";
+    location.href = "/vanillaJs_review/login";
   } else {
     alert("다시해주세요!");
   }

@@ -23,7 +23,7 @@ const paginationButton = (page, current_page) => {
   link.classList.add("pagigator_link");
 
   link.dataset.page_num = page;
-  link.setAttribute("href", "/review?page=" + page);
+  link.setAttribute("href", "/vanillaJs_review?page=" + page);
   list.appendChild(link);
   link.innerText = page;
   if (parseInt(current_page) === page) link.classList.add("active");
@@ -115,7 +115,7 @@ const showCategoryData = (item) => {
   itemDes.innerText = item.content;
   itemSubTitle.innerText = "#" + item.sub_title;
 
-  itemLink.setAttribute("href", `/review/update/${item.id}`);
+  itemLink.setAttribute("href", `/vanillaJs_review/update/${item.id}`);
   container.appendChild(itemList);
 
   if (item.image) {

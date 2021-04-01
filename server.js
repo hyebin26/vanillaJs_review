@@ -3,36 +3,36 @@ const app = express();
 
 app.use(express.static(__dirname));
 
-app.get("/review/update/:id", (req, res) => {
+app.get("/update/:id", (req, res) => {
   res.sendFile(__dirname + "/views/update.html");
 });
-app.get("/review", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/views/login.html");
 });
-app.get("/review/new", function (req, res) {
+app.get("/new", function (req, res) {
   res.sendFile(__dirname + "/views/addReviewForm.html");
 });
 app.get("/signUp", (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
-app.get("/review/profile", (req, res) => {
+app.get("/profile", (req, res) => {
   res.sendFile(__dirname + "/views/profile.html");
 });
-app.get("/review/search", (req, res) => {
+app.get("/search", (req, res) => {
   res.sendFile(__dirname + "/views/search.html");
 });
-app.get("/review/update/:id/edit", (req, res) => {
+app.get("/update/:id/edit", (req, res) => {
   res.sendFile(__dirname + "/views/editReviewForm.html");
 });
-app.get("/review/movie", (req, res) => {
+app.get("/movie", (req, res) => {
   res.sendFile(__dirname + "/views/movie.html");
 });
-app.get("/review/book", (req, res) => {
+app.get("/book", (req, res) => {
   res.sendFile(__dirname + "/views/book.html");
 });
-app.get("/review/album", (req, res) => {
+app.get("/album", (req, res) => {
   res.sendFile(__dirname + "/views/album.html");
 });
