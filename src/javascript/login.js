@@ -1,7 +1,5 @@
-const local = "http://localhost:3500/review";
-
 const fetchLogin = async (id, password) => {
-  return await fetch(`${local}/login`, {
+  return await fetch(`https://review-server.herokuapp.com/review/login`, {
     method: "POST",
     body: JSON.stringify({ id, password }),
     headers: {
@@ -32,4 +30,3 @@ const LoginInit = () => {
   loginBtn.addEventListener("click", clickLogin);
 };
 LoginInit();
-e;

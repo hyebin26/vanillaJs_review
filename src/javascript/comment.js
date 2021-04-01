@@ -1,5 +1,3 @@
-const localComment = "http://localhost:3500";
-
 const loadDate = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -26,17 +24,20 @@ const clickCommentEdit = async (e) => {
   editList.replaceChild(editSpan, editContent);
   e.target.parentNode.removeChild(e.target);
 
-  await fetch(`${localComment}/review/updateData/${id}/comment/edit`, {
-    method: "POST",
-    body: JSON.stringify({
-      editDataset: editList.dataset.commentNum,
-      editTime: loadDate(),
-      editContent: editSpan.innerText,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id}/comment/edit`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        editDataset: editList.dataset.commentNum,
+        editTime: loadDate(),
+        editContent: editSpan.innerText,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 const handleCommentDelete = async (e) => {
   e.preventDefault();
@@ -44,15 +45,18 @@ const handleCommentDelete = async (e) => {
   const list = e.target.parentNode.parentNode;
   const listContainer = list.parentNode;
   listContainer.removeChild(list);
-  await fetch(`${localComment}/review/updateData/${id}/comment/delete`, {
-    method: "POST",
-    body: JSON.stringify({
-      list_num: list.dataset,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id}/comment/delete`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        deleteNum: list.dataset.commentNum,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 const handleCommentUpdate = (e) => {
   e.preventDefault();
@@ -138,8 +142,12 @@ const clickCommentAddBtn = async (event) => {
         "Content-Type": "application/json",
       },
     };
-    await fetch(`${localComment}/review/updateData/${id}/comment`, option); //
+    await fetch(
+      `https://review-server.herokuapp.com/review/updateData/${id}/comment`,
+      option
+    ); //
     showComment(addComment);
+    location.href = `/review/update/${id}`;
   }
 };
 
@@ -148,7 +156,9 @@ const fetchComment = async () => {
   const updateAddFormBtn = document.querySelector(".comment_add_btn");
   const id = location.href.split("update/")[1];
 
-  await fetch(`${localComment}/review/updateData/${id}/comment`) //
+  await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id}/comment`
+  ) //
     .then((res) => res.json()) //
     .then((data) => (commentData = data))
     .catch((err) => new Error(err));

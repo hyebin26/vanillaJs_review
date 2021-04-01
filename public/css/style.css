@@ -160,3 +160,12 @@ main {
     max-width: var(--sixth_width);
   }
 }
+
+.loading_container {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 2rem 0;
+}
+.none {
+  display: none;
+}

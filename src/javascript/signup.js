@@ -1,7 +1,5 @@
-const local = "http://localhost:3500/review";
-
 const doubleCheck = async (_inputValue, _info) => {
-  const url = `${local}/user/${_info}`;
+  const url = `https://review-server.herokuapp.com/review/user/${_info}`;
   const user = {};
   user[_info] = _inputValue;
   return await fetch(url, {
@@ -18,6 +16,7 @@ const doubleCheck = async (_inputValue, _info) => {
 const focusoutId = (e) => {
   const input = e.target;
   doubleCheck(input.value, "id").then((res) => {
+    console.log(res);
     if (res === true) {
       input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
       input.classList.add("js_red");
@@ -92,7 +91,7 @@ const focusoutNickname = (e) => {
 };
 
 const insertUser = async (_id, _passowrd, _nickname) => {
-  const url = `${local}/user`;
+  const url = `https://review-server.herokuapp.com/review/user`;
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -118,7 +117,6 @@ const clickSubmit = (e) => {
   const arrInputEvery = allInputArr.every(
     (item) => !item.classList.contains("js_red")
   );
-  console.log(arrInputEvery);
   if (
     arrInputEvery &&
     idValue !== "" &&
@@ -126,9 +124,9 @@ const clickSubmit = (e) => {
     password2Value !== "" &&
     passwordValue !== ""
   ) {
+    insertUser(idValue, passwordValue, nicknameValue);
     alert("회원가입성공!");
     location.href = "/review/login";
-    insertUser(idValue, passwordValue, nicknameValue);
   } else {
     alert("다시해주세요!");
   }

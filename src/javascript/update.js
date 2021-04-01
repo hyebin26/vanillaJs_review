@@ -1,8 +1,8 @@
-const local = "http://localhost:3500";
-
 const loadUpdate = async () => {
   const id = location.href.split("update/")[1];
-  const data = await fetch(`${local}/review/updateData/${id}`) //
+  const data = await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id}`
+  ) //
     .then((result) => result.json());
   showUpdateData(data[0]);
 };
@@ -23,8 +23,11 @@ const clickUpdateDelete = async (e) => {
       },
     };
     if (confirm("삭제하시겠습니까?")) {
+      await fetch(
+        `https://review-server.herokuapp.com/review/updateData/${id}/delete`,
+        opt
+      );
       location.href = "/review";
-      await fetch(`${local}/review/updateData/${id}/delete`, opt);
     } else {
       return false;
     }
@@ -53,7 +56,10 @@ const clickUpdateEdit = async (e) => {
       },
     };
     location.href = location.href + "/edit";
-    await fetch(`${local}/review/updateData/${id}/edit`, opt);
+    await fetch(
+      `https://review-server.herokuapp.com/review/updateData/${id}/edit`,
+      opt
+    );
   } else {
     e.preventDefault();
     alert("권한이 없습니다.");

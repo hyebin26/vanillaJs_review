@@ -1,5 +1,3 @@
-const localSearch = "http://localhost:3500";
-
 const displayList = (items, rows_per_page, page) => {
   page--;
 
@@ -42,6 +40,15 @@ const paginationButton = (page, current_page) => {
 };
 
 const loadSearchData = async (e) => {
+  const loadingContainer = document.querySelector(".contents_container");
+  let isLoading = true;
+  const loadingBox = document.createElement("div");
+  if (isLoading) {
+    loadingBox.classList.add("loading_container");
+    loadingBox.innerText = "...로딩중입니다.";
+  loadingContainer.appendChild(loadingBox);
+  }
+
   const currentURL = new URL(location.href);
   const url = new URLSearchParams(currentURL.search);
   const query = url.get("query");
@@ -52,12 +59,18 @@ const loadSearchData = async (e) => {
       "Content-Type": "application/json",
     },
   };
-  const fetchSearch = await fetch(`${localSearch}/review/search`, opt) //
+  const fetchSearch = await fetch(
+    `https://review-server.herokuapp.com/review/search`,
+    opt
+  ) //
     .then((res) => res.json())
     .catch((err) => console.log(err));
   const paginationWrapper = document.querySelector(".pagigator_container");
 
-  if (fetchSearch.length === 0 ) {
+  isLoading = false;
+  if (isLoading === false) loadingBox.classList.add("none");
+
+  if (fetchSearch.length === 0) {
     const container = document.querySelector(".contents_container");
     const cleanData = document.createElement("h2");
     cleanData.classList.add("clean_h2");

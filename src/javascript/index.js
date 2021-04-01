@@ -1,5 +1,3 @@
-const localhost = "http://localhost:3500";
-
 const displayList = (items, rows_per_page, page) => {
   page--;
 
@@ -42,7 +40,18 @@ const paginationButton = (page, current_page) => {
 };
 
 const loadReview = async () => {
-  const contents = await fetch(`${localhost}/review/reviewData`) //
+  const loadingContainer = document.querySelector(".contents_container");
+  let isLoading = true;
+  const loadingBox = document.createElement("div");
+  if (isLoading) {
+    loadingBox.classList.add("loading_container");
+    loadingBox.innerText = "...로딩중입니다.";
+    loadingContainer.appendChild(loadingBox);
+  }
+
+  const contents = await fetch(
+    `https://review-server.herokuapp.com/review/reviewData`
+  ) //
     .then((res) => res.json())
     .catch((err) => console.log(err));
   const paginationWrapper = document.querySelector(".pagigator_container");
@@ -54,6 +63,8 @@ const loadReview = async () => {
     currentUrl.get("page") === null ? 1 : currentUrl.get("page");
   const rows = 5;
 
+  isLoading = false;
+  if (isLoading === false) loadingBox.classList.add("none");
   displayList(contents, rows, currentPage);
   setupPagination(contents, rows, paginationWrapper, currentPage);
 };

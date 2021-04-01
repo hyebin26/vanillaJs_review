@@ -1,5 +1,3 @@
-const localPro = "http://localhost:3500";
-
 const displayList = (items, rows_per_page, page) => {
   page--;
 
@@ -43,6 +41,15 @@ const paginationButton = (page, current_page) => {
 const loadProfileData = async () => {
   const currentUser = sessionStorage.getItem("currentUser");
 
+  const loadingContainer = document.querySelector(".contents_container");
+  let isLoading = true;
+  const loadingBox = document.createElement("div");
+  if (isLoading) {
+    loadingBox.classList.add("loading_container");
+    loadingBox.innerText = "...로딩중입니다.";
+    loadingContainer.appendChild(loadingBox);
+  }
+
   if (currentUser === null) {
     return false;
   } else {
@@ -55,20 +62,31 @@ const loadProfileData = async () => {
         "Content-Type": "application/json",
       },
     };
-    const profileDatas = await fetch(`${localPro}/review/profile`, opt) //
+    const profileDatas = await fetch(
+      `https://review-server.herokuapp.com/review/profile`,
+      opt
+    ) //
       .then((response) => response.json());
     const contentLength = document.querySelector(".profile_content_length");
     contentLength.innerText = "나의 글 " + profileDatas.length;
 
-    const paginationWrapper = document.querySelector(".pagigator_container");
-    const url = new URL(location.href);
-    const currentUrl = new URLSearchParams(url.search);
-    let currentPage =
-      currentUrl.get("page") === null ? 1 : currentUrl.get("page");
-    const rows = 5;
+    if (profileDatas === undefined) {
+      loadingContainer.innerHTML = "데이터가 없습니다.";
+    } //
+    else {
+      const paginationWrapper = document.querySelector(".pagigator_container");
+      const url = new URL(location.href);
+      const currentUrl = new URLSearchParams(url.search);
+      let currentPage =
+        currentUrl.get("page") === null ? 1 : currentUrl.get("page");
+      const rows = 5;
 
-    displayList(profileDatas, rows, currentPage);
-    setupPagination(profileDatas, rows, paginationWrapper, currentPage);
+      isLoading = false;
+      if (isLoading === false) loadingBox.classList.add("none");
+
+      displayList(profileDatas, rows, currentPage);
+      setupPagination(profileDatas, rows, paginationWrapper, currentPage);
+    }
   }
 };
 

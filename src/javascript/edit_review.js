@@ -1,8 +1,8 @@
-const localEdit = "http://localhost:3500";
-
 const fetchEditData = async () => {
   const id_edit = location.href.split("update/")[1];
-  const editData = await fetch(`${localEdit}/review/updateData/${id_edit}`) //
+  const editData = await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id_edit}`
+  ) //
     .then((data) => data.json())
     .catch((err) => console.log(err));
 
@@ -32,8 +32,11 @@ const handleClickEditBtn = async () => {
       "Content-Type": "application/json",
     },
   };
+  await fetch(
+    `https://review-server.herokuapp.com/review/updateData/${id_edit}/click`,
+    opt
+  );
   location.href = `/review/update/${editDataset}`;
-  await fetch(`${localEdit}/review/updateData/${id_edit}/click`, opt);
 };
 
 const showEditData = (review) => {
@@ -43,12 +46,15 @@ const showEditData = (review) => {
   const editCategory = document.querySelector(".edit_category");
   const editBtn = document.querySelector(".review_btn");
   const editForm = document.querySelector(".edit_form");
+  const editImage = document.querySelector(".image_span");
 
   editForm.dataset.edit_num = review.id;
   editTitle.value = review.title;
   editSubTitle.value = review.sub_title;
   editContent.innerText = review.content;
   editCategory.value = review.category;
+  editImage.dataset.image = review.image;
+  editImage.innerHTML = "이미지 추가!";
 
   editBtn.addEventListener("click", handleClickEditBtn);
 };

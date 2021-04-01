@@ -6,7 +6,7 @@ const clickAddReviewBtn = async (e) => {
   const imageAdd = document.querySelector(".image_span").dataset.image;
   const currentUser = sessionStorage.getItem("currentUser");
 
-  const opt = {
+  const addOpt = {
     method: "POST",
     body: JSON.stringify({
       userId: currentUser,
@@ -20,8 +20,8 @@ const clickAddReviewBtn = async (e) => {
       "Content-Type": "application/json",
     },
   };
+  await fetch("https://review-server.herokuapp.com/review/new", addOpt);
   location.replace("/review");
-  await fetch("http://localhost:3500/review/new", opt);
 };
 
 const addReviewInit = () => {
