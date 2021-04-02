@@ -41,6 +41,7 @@ main textarea {
   outline: none;
   height: 20rem;
   padding: 0.3rem;
+  white-space: pre-wrap;
 }
 .btn_container {
   width: 100%;
@@ -71,6 +72,9 @@ main textarea {
   height: 25rem;
   overflow-y: scroll;
   cursor: text;
+}
+.edit_content {
+  white-space: pre;
 }
 
 @media screen and (max-width: 1025px) {

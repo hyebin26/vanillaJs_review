@@ -38,7 +38,6 @@ main {
 
 .update_user_sub_container {
   border-top: 1px solid var(--border);
-  padding: 0.3rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -66,9 +65,7 @@ main {
   justify-content: center;
   padding-bottom: 1rem;
 }
-.icons_container li {
-  padding: 0 0.8rem;
-}
+
 .icons_container li a {
   padding: 0.5rem 0.7rem;
 }
@@ -84,6 +81,7 @@ main {
   font-size: 1.3rem;
   font-weight: bold;
   padding-bottom: 1rem;
+  overflow-wrap: break-word;
 }
 .update_description {
   font-size: 0.9rem;
@@ -130,9 +128,10 @@ main {
   align-content: center;
 }
 .comment_input_box input {
-  flex: 1 1 50%;
-  padding: 0.3rem 0;
+  width: 80%;
+  padding: 0.2rem 0;
   outline: none;
+  font-size: 0.8rem;
 }
 .comment_input_box button {
   outline: none;

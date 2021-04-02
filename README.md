@@ -1,6 +1,5 @@
 ### 이번에 한 것
 
-1. css content_description max-height 추가
-2. category.js 경로 수정
-3. editReviewForm.html css 경로 수정
-4. heroku final
+1. update_title에 overflow-wrap 추가
+2. fix css error
+3. git push final

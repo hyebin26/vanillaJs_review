@@ -51,7 +51,7 @@ const showEditData = (review) => {
   editForm.dataset.edit_num = review.id;
   editTitle.value = review.title;
   editSubTitle.value = review.sub_title;
-  editContent.innerText = review.content;
+  editContent.value = review.content;
   editCategory.value = review.category;
   editImage.dataset.image = review.image;
   editImage.innerHTML = "이미지 추가!";

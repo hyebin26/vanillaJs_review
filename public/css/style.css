@@ -15,6 +15,7 @@
 
 body {
   width: 100%;
+  padding: 0 1rem;
 }
 
 * {
@@ -90,7 +91,7 @@ main {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-height: 38px;
+  max-height: 40px;
 }
 .img_container img {
   width: 100%;
@@ -154,10 +155,18 @@ main {
   .width_container {
     max-width: var(--fifth_width);
   }
+  
+  .content_description {
+    max-height: 35px;
+  }
 }
 @media screen and (max-width: 399px) {
   .width_container {
     max-width: var(--sixth_width);
+  }
+  
+  .content_description {
+    max-height: 30px;
   }
 }
 

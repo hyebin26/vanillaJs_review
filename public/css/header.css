@@ -17,6 +17,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  padding: 0 1rem;
+}
 li {
   list-style-type: none;
 }
@@ -59,7 +62,7 @@ header a:hover {
   flex-direction: row-reverse;
 }
 .search a {
-  margin: 0 1rem;
+  margin: 0 0.7rem;
 }
 
 .search input {
@@ -127,14 +130,14 @@ header a:hover {
   .search input {
     width: var(--intput_second_width);
   }
+  * {
+    font-size: 0.9rem;
+  }
   .nav {
     display: flex;
     justify-content: space-around;
   }
   .nav a {
-  }
-  * {
-    font-size: 0.9rem;
   }
 
   .logo {
@@ -149,12 +152,13 @@ header a:hover {
   .nav {
     display: block;
   }
-  .search input {
-    width: var(--intput_second_width);
-  }
   * {
     font-size: 0.7rem;
   }
+  .search input {
+    width: var(--intput_second_width);
+  }
+
   .logo {
     flex: 0;
   }
