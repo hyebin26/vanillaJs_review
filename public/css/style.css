@@ -90,6 +90,7 @@ main {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  max-height: 38px;
 }
 .img_container img {
   width: 100%;
@@ -123,8 +124,7 @@ main {
 .pagigator_container a:hover {
   background-color: var(--a_hover);
 }
-.pagigator_list {
-}
+
 .active {
   background-color: var(--a_hover);
 }

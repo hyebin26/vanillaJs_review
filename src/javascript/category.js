@@ -53,8 +53,7 @@ const loadCategoryData = async () => {
     loadingBox.innerText = "...로딩중입니다.";
     loadingContainer.appendChild(loadingBox);
   }
-  const urlNum = location.href.indexOf("w") + 2;
-  const category = location.href.substring(urlNum);
+  const category = location.href.split("com/")[1];
   const contents = await fetch(
     `https://review-server.herokuapp.com/review/category/${category}`
   ) //
