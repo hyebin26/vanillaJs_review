@@ -147,7 +147,7 @@ const clickCommentAddBtn = async (event) => {
       option
     ); //
     showComment(addComment);
-    location.href = `/vanillaJs_review/update/${id}`;
+    location.href = `/update/${id}`;
   }
 };
 

@@ -18,12 +18,13 @@ const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
 const paginationButton = (page, current_page) => {
   let link = document.createElement("a");
   let list = document.createElement("li");
+  const url = window.location.href;
 
   list.classList.add("pagigator_list");
   link.classList.add("pagigator_link");
 
   link.dataset.page_num = page;
-  link.setAttribute("href", "/vanillaJs_review?page=" + page);
+  link.setAttribute("href", `${url}?page=${page}`);
   list.appendChild(link);
   link.innerText = page;
   if (parseInt(current_page) === page) link.classList.add("active");

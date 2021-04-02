@@ -7,15 +7,21 @@ const displayList = (items, rows_per_page, page) => {
   paginatedItems.map((item) => showCategoryData(item));
 };
 
-const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
+const setupPagination = (
+  items,
+  rows_per_page,
+  wrapper,
+  currentPage,
+  category
+) => {
   let page_count = Math.ceil(items.length / rows_per_page);
   for (let i = 1; i < page_count + 1; i++) {
-    let btn = paginationButton(i, currentPage);
+    let btn = paginationButton(i, currentPage, category);
     wrapper.appendChild(btn);
   }
 };
 
-const paginationButton = (page, current_page) => {
+const paginationButton = (page, current_page, category) => {
   let link = document.createElement("a");
   let list = document.createElement("li");
 
@@ -23,7 +29,7 @@ const paginationButton = (page, current_page) => {
   link.classList.add("pagigator_link");
 
   link.dataset.page_num = page;
-  link.setAttribute("href", "/vanillaJs_review?page=" + page);
+  link.setAttribute("href", `/${category}?page=` + page);
   list.appendChild(link);
   link.innerText = page;
   if (parseInt(current_page) === page) link.classList.add("active");
@@ -66,7 +72,7 @@ const loadCategoryData = async () => {
   if (isLoading === false) loadingBox.classList.add("none");
 
   displayList(contents, rows, currentPage);
-  setupPagination(contents, rows, paginationWrapper, currentPage);
+  setupPagination(contents, rows, paginationWrapper, currentPage, category);
 };
 
 const showCategoryData = (item) => {
@@ -115,7 +121,7 @@ const showCategoryData = (item) => {
   itemDes.innerText = item.content;
   itemSubTitle.innerText = "#" + item.sub_title;
 
-  itemLink.setAttribute("href", `/vanillaJs_review/update/${item.id}`);
+  itemLink.setAttribute("href", `/update/${item.id}`);
   container.appendChild(itemList);
 
   if (item.image) {

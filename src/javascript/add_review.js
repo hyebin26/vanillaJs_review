@@ -21,7 +21,7 @@ const clickAddReviewBtn = async (e) => {
     },
   };
   await fetch("https://review-server.herokuapp.com/review/new", addOpt);
-  location.replace("/vanillaJs_review");
+  location.replace("/");
 };
 
 const addReviewInit = () => {

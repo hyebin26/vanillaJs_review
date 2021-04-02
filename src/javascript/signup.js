@@ -16,7 +16,6 @@ const doubleCheck = async (_inputValue, _info) => {
 const focusoutId = (e) => {
   const input = e.target;
   doubleCheck(input.value, "id").then((res) => {
-    console.log(res);
     if (res === true) {
       input.nextElementSibling.innerHTML = "이미 존재하는 아이디입니다.";
       input.classList.add("js_red");
@@ -126,7 +125,7 @@ const clickSubmit = (e) => {
   ) {
     insertUser(idValue, passwordValue, nicknameValue);
     alert("회원가입성공!");
-    location.href = "/vanillaJs_review/login";
+    location.href = "/login";
   } else {
     alert("다시해주세요!");
   }

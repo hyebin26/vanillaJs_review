@@ -27,7 +27,7 @@ const clickUpdateDelete = async (e) => {
         `https://review-server.herokuapp.com/review/updateData/${id}/delete`,
         opt
       );
-      location.href = "/vanillaJs_review";
+      location.href = "/";
     } else {
       return false;
     }

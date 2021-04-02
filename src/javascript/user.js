@@ -1,7 +1,7 @@
 const clickLogoutBtn = (e) => {
   e.preventDefault();
   sessionStorage.removeItem("currentUser");
-  location.replace("/vanillaJs_review");
+  location.replace("/");
 };
 
 const loadUser = () => {
@@ -10,12 +10,12 @@ const loadUser = () => {
   const profileBtn = document.querySelector(".search_profile");
 
   if (currentUser == null) {
-    profileBtn.setAttribute("href", "/vanillaJs_review/signUp");
+    profileBtn.setAttribute("href", "/signUp");
     profileBtn.innerText = "회원가입";
   } else {
     loginBtn.innerText = "로그아웃";
     loginBtn.addEventListener("click", clickLogoutBtn);
-    profileBtn.setAttribute("href", "/vanillaJs_review/profile");
+    profileBtn.setAttribute("href", "/profile");
     profileBtn.innerText = currentUser;
   }
 };

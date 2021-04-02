@@ -18,7 +18,7 @@ const clickLogin = (e) => {
   fetchLogin(loginId, loginPassword).then((res) => {
     if (res) {
       sessionStorage.setItem("currentUser", res);
-      location.href = "/vanillaJs_review";
+      location.href = "/";
     } else {
       alert("아이디 혹은 비밀번호가 틀렸습니다.!");
     }

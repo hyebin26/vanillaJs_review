@@ -36,7 +36,7 @@ const handleClickEditBtn = async () => {
     `https://review-server.herokuapp.com/review/updateData/${id_edit}/click`,
     opt
   );
-  location.href = `/vanillaJs_review/update/${editDataset}`;
+  location.href = `/update/${editDataset}`;
 };
 
 const showEditData = (review) => {
