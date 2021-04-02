@@ -12,7 +12,7 @@ const imageLoader = async (file) => {
   }) //
     .then((res) => res.json());
   span.innerText = imageFile.original_filename + " 이미지 추가!";
-  span.dataset.image = imageFile.url;
+  span.dataset.image = imageFile.secure_url;
 };
 
 const imageUploaderInit = () => {
