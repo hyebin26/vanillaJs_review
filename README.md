@@ -116,4 +116,4 @@ const imageLoader = async (file) => {
 앱 링크 : <a href="https://review-vanillajs.herokuapp.com/">https://review-vanillajs.herokuapp.com/</a>
 
 서버 소스 링크 :<a href="https://github.com/hyebin-Hwang/server_reviewJS">https://github.com/hyebin-Hwang/server_reviewJS</a>
-* 앱이 작동하지 않을 시 새로고침을 눌러주세요!
+*앱이 작동하지 않을 시 새로고침을 눌러주세요!
