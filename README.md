@@ -13,7 +13,7 @@
 - dotenv
 - express
 
-## :camera:프로젝트 구현
+## :camera:주요 기능
 1. 서버와의 통신을 통해 정보 전달받기
 ```jsx
 const contents = await fetch(
@@ -126,6 +126,8 @@ app.get("/review/reviewData", (req, res) => {
 - 다른 url을 가진 서버와의 통신이므로, CORS에러를 맞닥뜨릴 수 밖에 없습니다. 서버에서 Access-Control-Allow-Origin설정을 해서 에러를 해결했습니다.
 2. 배포
 - 처음에 github를 이용해서 앱을 배포하고 서버는 heroku를 배포하려고 했으나 github는 nodejs를 지원하지 않아서 heroku에 배포했습니다. 또한 heroku에 배포할 때 github page보다 정보가 적어서 많은 에러와 맞닥뜨렸으며 구글 검색을 하고 heroku 문서부분을 참고해서 해결했습니다.
+## :thumbsup:느낀점 
+- 이번 프로젝트를 할 때는 템플릿을 정하지 않고 만들었습니다. 이유는 성능이 중요하다고 생각해서 디자인 적인 면은 별로 중요하지 않다고 생각해서 입니다. 하지만 템플릿이 없이 만드니까 디자인도 너무 이쁘지 않고 프로젝트를 하면서 기능을 추가하는데 많은 어려움을 겪었습니다. 다음에 하는 것은 템플릿까지는 아니더라도 참고할 것을 정하고 디테일한 것까지 정하고 보수를 하기 편하도록 코드를 구성해야 한다고 생각했습니다.
 ## 링크
 앱 링크 : <a href="https://review-vanillajs.herokuapp.com/">https://review-vanillajs.herokuapp.com/</a> *앱이 작동하지 않을 시 새로고침을 눌러주세요!
 
