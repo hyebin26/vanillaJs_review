@@ -32,8 +32,10 @@ const contents = fetch(...);
 const rows = 5;
 let currentPage =
     currentUrl.get("page") === null ? 1 : currentUrl.get("page");
+    
 displayList(contents, rows, currentPage);
 setupPagination(contents, rows, paginationWrapper, currentPage);
+
 const displayList = (items, rows_per_page, page) => {
   page--;
   let start = page * rows_per_page;
@@ -41,6 +43,7 @@ const displayList = (items, rows_per_page, page) => {
   let paginatedItems = items.slice(start, end);
   paginatedItems.map((item) => showMainData(item));
 };
+
 const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
   let page_count = Math.ceil(items.length / rows_per_page);
   for (let i = 1; i < page_count + 1; i++) {
@@ -48,6 +51,7 @@ const setupPagination = (items, rows_per_page, wrapper, currentPage) => {
     wrapper.appendChild(btn);
   }
 };
+
 const paginationButton = (page, current_page) => {
   let link = document.createElement("a");
   let list = document.createElement("li");
