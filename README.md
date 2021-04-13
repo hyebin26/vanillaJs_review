@@ -131,7 +131,7 @@ app.get("/review/reviewData", (req, res) => {
 - 이전에 커밋으로 돌아갈 상황을 대비해서 readme 혹은 커밋을 디테일하게 적어야 된다고 생각했습니다.
 - 변수이름이 너무 규칙적이지 않고 코드를 직관적으로 확인할 수 있도록 해야 겠다고 느꼈습니다.
 - 배포하는 것이 의도하지 않는 에러와 맞닥뜨리기도 하고, 정보도 부족한 편이므로, 서버는 미리 배포를 해서 천천히 에러를 해결해가면서 하는 것이 더 편할 것 같습니다.
-## 링크
+## :link:링크
 앱 링크 : <a href="https://review-vanillajs.herokuapp.com/">https://review-vanillajs.herokuapp.com/</a> *앱이 작동하지 않을 시 새로고침을 눌러주세요!
 
 서버 소스 링크 :<a href="https://github.com/hyebin-Hwang/server_reviewJS">https://github.com/hyebin-Hwang/server_reviewJS</a>
