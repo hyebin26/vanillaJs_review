@@ -1,7 +1,7 @@
 ## :memo:프로젝트 소개
 - 바닐라 자바스크립트를 사용해서 만든 리뷰페이지입니다. 이 프로젝트는 영화를 보거나 독서를 한 후 기억에서 점차 사라지는 것이 아쉬워서 느낀점을 기록하기 위해 시작하게 되었습니다. 
 - 회원가입 부분은 간단한 회원가입 폼을 만들어 입력한 정보를 Mysql DB에 저장을 하는 방식으로 구현했습니다. 댓글, 글 또한 마찬가지로 DB에 저장을 하였으며, 이러한 정보들은 서버와의 통신을 통해 저장하고 DB에서 정보를 받아와서 화면에 보여주는 형식으로 구현했습니다.
-- 서버는 mysql과 express를 통해 직접 배포하였습니다.
+- 서버 또한 mysql과 express를 통해 직접 배포하였습니다.
 - 웹팩으로 자바스크립트 파일을 번들링하고 서버와 앱 둘다 heroku에 배포하였습니다.
 
 ## :bell:사용한 기술 
@@ -107,6 +107,14 @@ const imageLoader = async (file) => {
   span.innerText = imageFile.original_filename + " 이미지 추가!";
   span.dataset.image = imageFile.secure_url;
 };
+```
+5. 서버 코드
+```jsx
+app.get("/review/reviewData", (req, res) => {
+    conn.query("select * from reviewData order by id desc", (err, result) => {
+      res.send(result);
+    });
+  });
 ```
 
 ## :exclamation:에러
