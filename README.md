@@ -113,7 +113,7 @@ const imageLoader = async (file) => {
 2. 배포
 - 처음에 github를 이용해서 앱을 배포하고 서버는 heroku를 배포하려고 했으나 github는 nodejs를 지원하지 않아서 heroku에 배포했습니다. 또한 heroku에 배포할 때 github page보다 정보가 적어서 많은 에러와 맞닥뜨렸으며 구글 검색을 하고 heroku 문서부분을 참고해서 해결했습니다.
 ## 링크
-앱 링크 : <a href="https://review-vanillajs.herokuapp.com/">https://review-vanillajs.herokuapp.com/</a>
+앱 링크 : <a href="https://review-vanillajs.herokuapp.com/">https://review-vanillajs.herokuapp.com/</a> *앱이 작동하지 않을 시 새로고침을 눌러주세요!
 
 서버 소스 링크 :<a href="https://github.com/hyebin-Hwang/server_reviewJS">https://github.com/hyebin-Hwang/server_reviewJS</a>
-*앱이 작동하지 않을 시 새로고침을 눌러주세요!
+
