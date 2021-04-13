@@ -123,7 +123,7 @@ app.get("/review/reviewData", (req, res) => {
 
 ## :exclamation:에러
 1. CORS
-- 다른 url을 가진 서버와의 통신이므로, CORS에러를 맞닥뜨릴 수 밖에 없다. 서버에서 Access-Control-Allow-Origin설정을 해서 에러를 해결했다.
+- 다른 url을 가진 서버와의 통신이므로, CORS에러를 맞닥뜨릴 수 밖에 없습니다. 서버에서 Access-Control-Allow-Origin설정을 해서 에러를 해결했습니다.
 2. 배포
 - 처음에 github를 이용해서 앱을 배포하고 서버는 heroku를 배포하려고 했으나 github는 nodejs를 지원하지 않아서 heroku에 배포했습니다. 또한 heroku에 배포할 때 github page보다 정보가 적어서 많은 에러와 맞닥뜨렸으며 구글 검색을 하고 heroku 문서부분을 참고해서 해결했습니다.
 ## 링크
