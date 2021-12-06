@@ -124,7 +124,7 @@ app.get("/review/reviewData", (req, res) => {
 ## :exclamation:에러
 1. CORS(Cross Origin-Resource Sharing)
 - CORS는 한국어로 직역하면 교차 출처 리소스 공유라고 해석할 수 있습니다. 여기서 "교차 출처"라고 하는 것은 "다른 출처"를 의미합니다. 요청을 보내는 프론트 주소와 백엔드 주소가 다르면 CORS 에러가 발생합니다.
-- 이번 프로젝트를 진행하면서, 프론트에서 백엔드의 정보를 받으면서 CORS 관련 에러를 겪었습니다. 이러한 문제를 해결하기 위해 서버에서 Access-Control-Allow-Origin설정을 해서 에러를 해결했습니다.
+- 이번 프로젝트를 진행하면서, 프론트에서 서버와의 통신을 하면서 CORS 관련 에러를 겪었습니다. 관련 문제를 해결하기 위해 cors라는 패키지를 이용해서, 요청 응답 헤더에 Acess-Control-Allow-Origin을 설정해주었습니다.
 2. 배포
 - 이번 프로젝트를 진행하면서 처음으로, 서버와 웹을 둘 다 배포했습니다. Github는 nodejs를 지원하지 않고 AWS는 DB를 사용할 경우 비용이 발생해서 Heroku로 배포하였습니다.
 - Heroku에 배포할 때 Github, AWS보다 정보가 적어서 많은 에러를 만났으나 구글에 검색을 하고 Heroku 공식문서를 참고해서 해결하였습니다.
